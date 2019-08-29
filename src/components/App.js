@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import HomePage from './home/home';
-import About from './about/about';
+import HomePage from './componentFiles/home';
+import About from './componentFiles/about';
 import Header from './common/header';
-import PageNotFound from './PageNotFound';
+import PageNotFound from './common/PageNotFound';
 
 const App = () => {
 	return (
