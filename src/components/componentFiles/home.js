@@ -10,21 +10,21 @@ const HomePage = () => {
 				<div className="wrapper">
 					<Carousel>
 						<Carousel.Item>
-							<img src="src/assets/images/IMG_2358-1083.jpg" className="carousel_image" alt="..." />
+							<img src="src/assets/images/IMG_2299-1083.jpg" className="carousel_image" alt="..." />
 							<Carousel.Caption>
 								<h3>slide label 1</h3>
 								<p>slide.</p>
 							</Carousel.Caption>
 						</Carousel.Item>
 						<Carousel.Item>
-							<img src="src/assets/images/IMG_2385-1083.jpg" className="carousel_image" alt="..." />
+							<img src="src/assets/images/Jay_8.jpg" className="carousel_image" alt="..." />
 							<Carousel.Caption>
 								<h3>slide label 2</h3>
 								<p>slide.</p>
 							</Carousel.Caption>
 						</Carousel.Item>
 						<Carousel.Item>
-							<img src="src/assets/images/RFM_YO_14.jpg" className="carousel_image" alt="..." />
+							<img src="src/assets/images/RFM_LIZ_9.jpg" className="carousel_image" alt="..." />
 							<Carousel.Caption>
 								<h3>slide label 3</h3>
 								<p>slide.</p>
