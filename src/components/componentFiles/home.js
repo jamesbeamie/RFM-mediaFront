@@ -1,13 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Carousel from 'react-bootstrap/Carousel';
+import '../../assets/styles/home.css';
+// import { Link } from 'react-router-dom';
 
 const HomePage = () => (
-	<div className="jumbotron">
-		<h1>Royal Frrames</h1>
-		<p>Paragraph</p>
-		<Link to="about" className="btn btn-primary btn-lg">
-			about
-		</Link>
+	<div className="wrapper">
+		<Carousel>
+			<Carousel.Item>
+				<img src="src/assets/images/IMG_2358-1083.jpg" className="carousel_image" alt="..." />
+				<Carousel.Caption>
+					<h3>slide label 1</h3>
+					<p>slide.</p>
+				</Carousel.Caption>
+			</Carousel.Item>
+			<Carousel.Item>
+				<img src="src/assets/images/IMG_2385-1083.jpg" className="carousel_image" alt="..." />
+				<Carousel.Caption>
+					<h3>slide label 2</h3>
+					<p>slide.</p>
+				</Carousel.Caption>
+			</Carousel.Item>
+			<Carousel.Item>
+				<img src="src/assets/images/RFM_YO_14.jpg" className="carousel_image" alt="..." />
+				<Carousel.Caption>
+					<h3>slide label 3</h3>
+					<p>slide.</p>
+				</Carousel.Caption>
+			</Carousel.Item>
+		</Carousel>
 	</div>
 );
 
