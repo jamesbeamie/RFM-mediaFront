@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../assets/styles/blogModal.css';
 import '../../assets/styles/blog.css';
-import Modal from '../common/modal';
+import MyModal from '../common/modal';
 import Backdrop from '../common/backdrop';
 import BlogList from './blogs/BlogList';
 // import loginContext from '../../common/loginContext';
@@ -165,7 +165,7 @@ class CreateBlog extends Component {
 			<React.Fragment>
 				{(creating || specificBlog) && <Backdrop />}
 				{creating && (
-					<Modal
+					<MyModal
 						title="Add blog"
 						canCancel
 						canConfirm
@@ -174,23 +174,23 @@ class CreateBlog extends Component {
 						confirmText="Post"
 					>
 						<form>
-							<div className="form-control">
+							<div className="form-ctrl">
 								<label htmlFor="title">Title</label>
 								<input type="text" id="title" ref={this.titleEl} />
 							</div>
-							<div className="form-control">
+							<div className="form-ctrl">
 								<label htmlFor="description">Description</label>
 								<input type="text" id="description" ref={this.descriptionEl} />
 							</div>
-							<div className="form-control">
-								<label htmlFor="tag">Tag</label>
-								<input type="text" id="tag" ref={this.tagEl} />
+							<div className="form-ctrl">
+								<label htmlFor="tag">Image</label>
+								<input type="file" id="tag" ref={this.tagEl} />
 							</div>
 						</form>
-					</Modal>
+					</MyModal>
 				)}
 				{specificBlog && (
-					<Modal
+					<MyModal
 						title={specificBlog.title}
 						canCancel
 						canConfirm
@@ -201,12 +201,14 @@ class CreateBlog extends Component {
 						<h4>title: {specificBlog.title}</h4>
 						<p>Description: {specificBlog.description}</p>
 						<h4>tag: {specificBlog.tag}</h4>
-					</Modal>
+					</MyModal>
 				)}
-				<div className="home-control">
+				<div className="hom-ctrl">
 					<h4>Create Blog</h4>
-					<button onClick={this.handleCreateBlog}> Click to create</button>
-					<a href="/img/upload">Upload image</a>
+					<button className="btn" onClick={this.handleCreateBlog}>
+						{' '}
+						Click to create
+					</button>
 				</div>
 				{isLoading ? <Spinner /> : <BlogList blogs={blogArray} blogDetails={this.showBlogDetails} />}
 			</React.Fragment>

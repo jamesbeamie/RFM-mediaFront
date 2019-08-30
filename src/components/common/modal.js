@@ -3,14 +3,14 @@ import React from 'react';
 import '../../assets/styles/index.css';
 import '../../assets/styles/modal.css';
 
-const Modal = (props) => {
+const MyModal = (props) => {
 	return (
-		<div className="modal">
-			<header className="modal_header">
+		<div className="MyModal">
+			<header className="MyModal_header">
 				<h1>{props.title}</h1>
 			</header>
-			<section className="modal_content">{props.children}</section>
-			<section className="modal_actions">
+			<section className="MyModal_content">{props.children}</section>
+			<section className="MyModal_actions">
 				{props.canCancel && (
 					<button className="btn" onClick={props.onCancel}>
 						cancel
@@ -26,4 +26,4 @@ const Modal = (props) => {
 	);
 };
 
-export default Modal;
+export default MyModal;
