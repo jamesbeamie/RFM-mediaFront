@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from './componentFiles/home';
 import About from './componentFiles/about';
 import Header from './common/header';
+// import Footer from './common/footer';
 import PageNotFound from './common/PageNotFound';
 
 const App = () => {

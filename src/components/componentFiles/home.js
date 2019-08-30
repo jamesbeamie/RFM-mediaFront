@@ -33,22 +33,58 @@ const HomePage = () => {
 					</Carousel>
 				</div>
 			</section>
-			<div className="container">
-				<div className="row jumbotron">
-					<div className="col-sm-6 text-center">kdbfjnvmncsjdnjsjdjkj</div>
-					<div className="col-sm-6 text-center">kdbfjnvmncsjdnjsjdjkj</div>
+			<div className="container-fluid homu">
+				<div className="row ">
+					<div className="col-sm-12 text-center ">
+						<h4>About Us</h4>
+						<hr className="horzLine" />
+					</div>
+					<div className="col-sm-6 text-center paded">
+							<h4>We do...</h4>
+						<hr className="horzLine" />
+
+						<div className="text-left content">
+							<p>photography services for:</p>
+							<p>Family</p>
+							<p>Potraits</p>
+							<p>Baby Bumps</p>
+							<p>Engagements</p>
+							<p>Little ones</p>
+						</div>
+					</div>
+					<div className="col-sm-6 text-center paded">
+						<img
+							src="src/assets/images/RFM_NP_NC_2.jpg"
+							className="img-responsive picha rounded-circle"
+							alt="..."
+						/>
+					</div>
 				</div>
 
-				<div className="row jumbotron">
-					<div className="col-sm-6 text-center">kdbfjnvmncsjdnjsjdjkj</div>
-					<div className="col-sm-6 text-center">kdbfjnvmncsjdnjsjdjkj</div>
-				</div>
-				<div className="row jumbotron">
-					<div className="col-sm-6 text-center">kdbfjnvmncsjdnjsjdjkj</div>
-					<div className="col-sm-6 text-center">kdbfjnvmncsjdnjsjdjkj</div>
+				<div className="row jumbotron bgkala">
+					<div className="col-sm-6 text-center">
+						<img src="src/assets/images/RFP_D_3b.jpg" className="img-responsive picha" alt="..." />
+					</div>
+					<div className="col-sm-6 text-center">
+						<h4>Our passion</h4>
+						<hr className="horzLine" />
+						<p>Is to create life long storlives</p>
+						<p>of our lives of our livesof our </p>
+						<p>jdfvbdfjvhbfddbfdbdddjddbfdbdddj</p>
+						<p>jdfvbdfjvhbfddbfdbdddjddbfdbdddj</p>
+						<p>jdfvbdfjvhbfddbfdbdddjddbfdbdddj</p>
+					</div>
 				</div>
 			</div>
 			<section />
+			<section>
+				<div className="container-fluid bg-light text-center">
+					<div className="col-sm-12 text-center paded">
+						<p>&copy;:RFM</p>
+						<p>social links with i</p>
+					</div>
+				</div>
+			</section>
 		</React.Fragment>
 	);
 };

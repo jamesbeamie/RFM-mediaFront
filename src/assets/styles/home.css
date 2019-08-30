@@ -9,3 +9,31 @@
 	width: 100%;
 	height: 95vh;
 }
+.homu {
+	margin-top: 60px;
+}
+.horzLine {
+	color: purple;
+	width: 10%;
+}
+.picha {
+	width: 95%;
+	/* height: 15rem; */
+	object-fit: cover;
+}
+.futa {
+	background-color: rgb(201, 200, 200);
+	bottom: 0;
+	margin: 0%;
+}
+.paded {
+	padding: 20px 0;
+}
+.content {
+	margin-left: 35%;
+}
+.bgkala {
+	background-color: blueviolet;
+	opacity: .7;
+	color: white;
+}
