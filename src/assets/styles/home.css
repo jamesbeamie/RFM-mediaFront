@@ -29,11 +29,22 @@
 .paded {
 	padding: 20px 0;
 }
+.padedcont {
+	padding-top: 40px;
+}
 .content {
 	margin-left: 35%;
 }
 .bgkala {
-	background-color: blueviolet;
-	opacity: .7;
+	background-color: #af7ac5;
+	/* opacity: .7; */
 	color: white;
+}
+.soc-media {
+	height: 2px;
+	padding: 2px;
+}
+.fonti {
+	font-family: "verdana" !important;
+	font-size: 15px;
 }
