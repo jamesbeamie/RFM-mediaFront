@@ -7,12 +7,6 @@
 nav {
 	padding: 20px 0 20px 0;
 }
-
-/* body {
-	margin-top: 100px;
-	padding: 0;
-	font-family: sans-serif;
-} */
 .btn {
 	color: white;
 	background-color: rgb(98, 199, 98);
@@ -22,15 +16,63 @@ nav {
 	margin-right: 1rem;
 	box-shadow: 3px 3px 5px rgb(3, 83, 88);
 }
-.form-control label,
-.form-control input {
-	color: green;
+.auth-form {
+	width: 25rem;
+	max-width: 80%;
+	margin: 13rem auto;
+}
+.form-ctrl label,
+.form-ctrl input {
+	color: rgb(108, 5, 131);
 	width: 100%;
 	display: block;
 }
-.form-control label {
-	margin-bottom: 0.5rem;
+.form-ctrl input {
+	border: 1px solid rgb(108, 5, 131);
+	border-radius: 2px;
 }
-.form-control {
-	margin-bottom: 1rem;
+.form-ctrl input:active {
+	outline: none;
+	border: 1px solid rgb(108, 5, 131);
+	border-radius: 2px;
+}
+.form-axon button {
+	margin-top: 10px;
+	margin-right: 1rem;
+	padding: 3px;
+	border-radius: 4px;
+	color: white;
+	background-color: rgb(108, 5, 131);
+	font: inherit;
+	border: 1px solid rgb(108, 5, 131);
+	box-shadow: 3px 3px 5px rgb(108, 5, 131);
+}
+.form-axon button:hover {
+	margin-top: 10px;
+	margin-right: 1rem;
+	padding: 3px;
+	border-radius: 4px;
+	color: white;
+	background-color: rgb(164, 47, 190);
+	font: inherit;
+	border: 1px solid rgb(108, 5, 131);
+	box-shadow: 4px 3px 7px rgb(34, 2, 41);
+}
+.form-axon a {
+	color: rgb(66, 41, 71);
+	text-decoration: none;
+}
+.form-axon a:hover {
+	color: rgb(193, 53, 224);
+}
+.btn {
+	margin-top: 10px;
+	margin-right: 1rem;
+	padding: 3px;
+	border-radius: 4px;
+	color: white;
+	background-color: rgb(108, 5, 131);
+	font: inherit;
+	border: 1px solid rgb(108, 5, 131);
+	box-shadow: 3px 3px 5px rgb(108, 5, 131);
 }
