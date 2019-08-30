@@ -54,10 +54,10 @@ const HomePage = () => {
 							</p>
 						</div>
 					</div>
-					<div className="col-sm-6 text-center paded">
+					<div className="col-sm-6 text-center pad-cont">
 						<img
 							src="src/assets/images/RFM_NP_NC_2.jpg"
-							className="img-responsive picha rounded-circle"
+							className="img-responsive img-fluid"
 							alt="..."
 						/>
 					</div>
@@ -65,7 +65,7 @@ const HomePage = () => {
 
 				<div className="row jumbotron bgkala">
 					<div className="col-sm-6 text-center">
-						<img src="src/assets/images/RFP_D_3b.jpg" className="img-responsive picha" alt="..." />
+						<img src="src/assets/images/RFP_D_3b.jpg" className="img-fluid" alt="..." />
 					</div>
 					<div className="col-sm-6 text-center">
 						<h4>Our passion</h4>
@@ -86,10 +86,10 @@ const HomePage = () => {
 					</div>
 					<div className="col-sm-4 text-center paded">
 						<p className="fonti">
-							<FontAwesomeIcon icon={faPhone} />:0700000000
+							<FontAwesomeIcon icon={faPhone} /> 0700000000
 						</p>
 						<p className="fonti">
-							<FontAwesomeIcon icon={faComment} />:0700000000
+							<FontAwesomeIcon icon={faComment} /> 0700000000
 						</p>
 					</div>
 					<div className="col-sm-4 paded">

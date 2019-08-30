@@ -3,8 +3,6 @@ import '../../assets/styles/header.css';
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
-	// const activeStyle = { color: '#F15B2A' };
-
 	return (
 		<nav className="navbar fixed-top navbar-expand-sm navbar-light bg-light navigation-style text-center">
 			<a className="navbar-brand" href="/">
@@ -47,6 +45,11 @@ const Header = () => {
 					<li className="nav-item">
 						<NavLink className="nav-link" to="/about" exact>
 							Family
+						</NavLink>
+					</li>
+					<li className="nav-item">
+						<NavLink className="nav-link" to="/signup" exact>
+							signup
 						</NavLink>
 					</li>
 					<li className="nav-item">

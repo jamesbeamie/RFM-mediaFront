@@ -32,6 +32,12 @@
 .padedcont {
 	padding-top: 40px;
 }
+.pad-cont {
+	padding: 40px;
+}
+.pad-cont img {
+	border-radius: 5px;
+}
 .content {
 	margin-left: 35%;
 }
