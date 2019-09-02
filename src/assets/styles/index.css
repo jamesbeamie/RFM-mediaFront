@@ -22,12 +22,15 @@ nav {
 	margin: 13rem auto;
 }
 .form-ctrl label,
-.form-ctrl input {
+.form-ctrl input,
+.form-ctrl textarea 
+{
 	color: rgb(108, 5, 131);
 	width: 100%;
 	display: block;
 }
-.form-ctrl input {
+.form-ctrl input,
+.form-ctrl textarea {
 	border: 1px solid rgb(108, 5, 131);
 	border-radius: 2px;
 }

@@ -72,7 +72,7 @@ class AuthPage extends Component {
 				</div>
 				<div className="form-axon">
 					<button type="submit">Signup</button>
-					<a href="/sigin">Or login</a>
+					<a href="/signin">Or login</a>
 				</div>
 			</form>
 		);
