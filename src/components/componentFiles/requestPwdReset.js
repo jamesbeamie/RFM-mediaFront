@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../assets/styles/auth.css';
 // import loginContext from '../common/loginContext';
-class LoginPage extends Component {
+class ResetRequest extends Component {
 	// static contextType = loginContext;
 
 	constructor(props) {
@@ -68,19 +68,14 @@ class LoginPage extends Component {
 			<form className="auth-form" onSubmit={this.handleSignUp}>
 				<div className="form-ctrl">
 					<label htmlFor="email">E-mail:</label>
-					<input type="email" id="email" ref={this.emailEl} />
-				</div>
-				<div className="form-ctrl">
-					<label htmlFor="password">Password:</label>
-					<input type="password" id="password" ref={this.passwordEl} />
+					<input placeholder="enter a registered email to recieve reset link" type="email" id="email" ref={this.emailEl} />
 				</div>
 				<div className="form-axon">
-					<button type="submit">login</button>
-					<a href="/link-to-reset">forgoten password?</a>
+					<button type="submit">Send link</button>
 				</div>
 			</form>
 		);
 	}
 }
 
-export default LoginPage;
+export default ResetRequest;

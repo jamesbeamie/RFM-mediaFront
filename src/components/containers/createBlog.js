@@ -166,7 +166,7 @@ class CreateBlog extends Component {
 				{(creating || specificBlog) && <Backdrop />}
 				{creating && (
 					<MyModal
-						title="Add blog"
+						title="Create blog"
 						canCancel
 						canConfirm
 						onCancel={this.handleCancel}
@@ -176,11 +176,11 @@ class CreateBlog extends Component {
 						<form>
 							<div className="form-ctrl">
 								<label htmlFor="title">Title</label>
-								<input type="text" id="title" ref={this.titleEl} />
+								<input placeholder="Title here" type="text" id="title" ref={this.titleEl} />
 							</div>
 							<div className="form-ctrl">
 								<label htmlFor="description">Description</label>
-								<input type="text" id="description" ref={this.descriptionEl} />
+								<textarea placeholder="300 words max" id="description" ref={this.descriptionEl} />
 							</div>
 							<div className="form-ctrl">
 								<label htmlFor="tag">Image</label>

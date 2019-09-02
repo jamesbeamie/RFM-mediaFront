@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../assets/styles/auth.css';
 // import loginContext from '../common/loginContext';
-class LoginPage extends Component {
+class PwdReset extends Component {
 	// static contextType = loginContext;
 
 	constructor(props) {
@@ -67,20 +67,19 @@ class LoginPage extends Component {
 		return (
 			<form className="auth-form" onSubmit={this.handleSignUp}>
 				<div className="form-ctrl">
-					<label htmlFor="email">E-mail:</label>
-					<input type="email" id="email" ref={this.emailEl} />
-				</div>
-				<div className="form-ctrl">
 					<label htmlFor="password">Password:</label>
 					<input type="password" id="password" ref={this.passwordEl} />
 				</div>
+				<div className="form-ctrl">
+					<label htmlFor="confirmpassword">Confirm Password:</label>
+					<input type="confirmpassword" id="confirmpassword" ref={this.passwordEl} />
+				</div>
 				<div className="form-axon">
-					<button type="submit">login</button>
-					<a href="/link-to-reset">forgoten password?</a>
+					<button type="submit">Reset</button>
 				</div>
 			</form>
 		);
 	}
 }
 
-export default LoginPage;
+export default PwdReset;
