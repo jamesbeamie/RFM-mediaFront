@@ -67,6 +67,10 @@ class PwdReset extends Component {
 		return (
 			<form className="auth-form" onSubmit={this.handleSignUp}>
 				<div className="form-ctrl">
+					<label htmlFor="email">E-mail:</label>
+					<input placeholder="Enter your registered email" type="email" id="email" ref={this.emailEl} />
+				</div>
+				<div className="form-ctrl">
 					<label htmlFor="password">Password:</label>
 					<input type="password" id="password" ref={this.passwordEl} />
 				</div>
