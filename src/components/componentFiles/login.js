@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../assets/styles/auth.css';
+import axios from 'axios';
 // import loginContext from '../common/loginContext';
 class LoginPage extends Component {
 	// static contextType = loginContext;
@@ -22,45 +23,50 @@ class LoginPage extends Component {
 		}
 
 		const requestBody = {
-			query: `
-                query{
-                    login(email: "${email}", password: "${password}"){
-                      userId
-                      token
-                    }
-                  }
-            `
+			user: {
+				email: `${email}`,
+				password: `${password}`
+			}
 		};
 
 		// acces api
-		fetch('https://royalframes-photography.herokuapp.com/photography', {
-			method: 'POST',
-			body: JSON.stringify(requestBody),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		})
-			.then((res) => {
-				if (res.status !== 200 && res.status !== 201) {
-					throw new Error('Login failed');
-				}
-				return res.json();
-			})
-			.then((resData) => {
-				if (resData.data.login.token) {
-					// pass the backend data to the context
-					this.context.login(
-						resData.data.login.token,
-						resData.data.login.userId,
-						resData.data.login.tokenExpires
-					);
-				}
-				// console.log('result', resData);
+		axios
+			.post('http://127.0.0.1:8000/photography/royalframesmedia/users/login/', requestBody)
+			.then((response) => {
+				console.log('response', response);
 			})
 			.catch((err) => {
-				console.log(err);
+				console.log('err', err);
 			});
-		console.log(email, password);
+
+		// fetch('https://royalframes-photography.herokuapp.com/photography', {
+		// 	method: 'POST',
+		// 	body: JSON.stringify(requestBody),
+		// 	headers: {
+		// 		'Content-Type': 'application/json'
+		// 	}
+		// })
+		// 	.then((res) => {
+		// 		if (res.status !== 200 && res.status !== 201) {
+		// 			throw new Error('Login failed');
+		// 		}
+		// 		return res.json();
+		// 	})
+		// 	.then((resData) => {
+		// 		if (resData.data.login.token) {
+		// 			// pass the backend data to the context
+		// 			this.context.login(
+		// 				resData.data.login.token,
+		// 				resData.data.login.userId,
+		// 				resData.data.login.tokenExpires
+		// 			);
+		// 		}
+		// 		// console.log('result', resData);
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 	});
+		// console.log(email, password);
 	};
 
 	render() {

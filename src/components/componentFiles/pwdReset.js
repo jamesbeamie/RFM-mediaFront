@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../assets/styles/auth.css';
+import axios from 'axios';
 // import loginContext from '../common/loginContext';
 class PwdReset extends Component {
 	// static contextType = loginContext;
@@ -10,57 +11,34 @@ class PwdReset extends Component {
 		// create refs to link input fields
 		this.emailEl = React.createRef();
 		this.passwordEl = React.createRef();
+		this.confirmpasswordEl = React.createRef();
 	}
 
 	handleSignUp = (event) => {
 		event.preventDefault();
 		const email = this.emailEl.current.value;
 		const password = this.passwordEl.current.value;
+		const confirmpassword = this.confirmpasswordEl.current.value
 
-		if (email.trim().length === 0 || password.trim().length === 0) {
+		if (email.trim().length === 0 || password.trim().length === 0 || confirmpassword !== password) {
+			console.log('pwderrrrorrrr', )
 			return;
 		}
 
 		const requestBody = {
-			query: `
-                query{
-                    login(email: "${email}", password: "${password}"){
-                      userId
-                      token
-                    }
-                  }
-            `
+			email: `${email}`,
+			password: `${password}`
 		};
 
 		// acces api
-		fetch('https://royalframes-photography.herokuapp.com/photography', {
-			method: 'POST',
-			body: JSON.stringify(requestBody),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		})
-			.then((res) => {
-				if (res.status !== 200 && res.status !== 201) {
-					throw new Error('Login failed');
-				}
-				return res.json();
-			})
-			.then((resData) => {
-				if (resData.data.login.token) {
-					// pass the backend data to the context
-					this.context.login(
-						resData.data.login.token,
-						resData.data.login.userId,
-						resData.data.login.tokenExpires
-					);
-				}
-				// console.log('result', resData);
+		axios
+			.patch('http://127.0.0.1:8000/photography/royalframesmedia/users/password_reset/', requestBody)
+			.then((response) => {
+				console.log('response', response);
 			})
 			.catch((err) => {
-				console.log(err);
+				console.log('err', err);
 			});
-		console.log(email, password);
 	};
 
 	render() {
@@ -76,7 +54,7 @@ class PwdReset extends Component {
 				</div>
 				<div className="form-ctrl">
 					<label htmlFor="confirmpassword">Confirm Password:</label>
-					<input type="confirmpassword" id="confirmpassword" ref={this.passwordEl} />
+					<input type="password" id="confirmpassword" ref={this.confirmpasswordEl} />
 				</div>
 				<div className="form-axon">
 					<button type="submit">Reset</button>
