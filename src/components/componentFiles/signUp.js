@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../assets/styles/auth.css';
+import axios from 'axios';
 class AuthPage extends Component {
 	state = {
 		isLogin: true
@@ -24,35 +25,41 @@ class AuthPage extends Component {
 			return;
 		}
 
+		console.log('username', username);
 		const requestBody = {
-			query: `
-                mutation {
-                    createUser(userInput: {email: "${email}", password: "${password}", userName: "${username}"}){
-                        _id
-                        userName
-                        email
-                    }
-                }
-            `
+			user: {
+				username: `${username}`,
+				email: `${email}`,
+				password: `${password}`
+			}
 		};
 
 		// acces api
-		fetch('https://royalframes-photography.herokuapp.com/photography', {
-			method: 'POST',
-			body: JSON.stringify(requestBody),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		})
-			.then((res) => {
-				if (res.status !== 200 && res.status !== 201) {
-					throw new Error('Signup failed');
-				}
+		axios
+			.post('http://127.0.0.1:8000/photography/royalframesmedia/users/', requestBody)
+			.then((response) => {
+				console.log('response', response);
 			})
 			.catch((err) => {
-				console.log(err);
+				console.log('err', err);
 			});
-		console.log(email, password);
+
+		// fetch('http://127.0.0.1:8000/photography/royalframesmedia/users/', {
+		// 	method: 'POST',
+		// 	body: JSON.stringify({ requestBody }),
+		// 	headers: {
+		// 		'Content-Type': 'application/json'
+		// 	}
+		// })
+		// 	.then((res) => {
+		// 		if (res.status !== 200 && res.status !== 201) {
+		// 			throw new Error('Signup failed');
+		// 		}
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 	});
+		// console.log(email, password);
 	};
 
 	render() {
