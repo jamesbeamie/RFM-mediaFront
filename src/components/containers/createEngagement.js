@@ -3,12 +3,12 @@ import '../../assets/styles/blogModal.css';
 import '../../assets/styles/blog.css';
 import MyModal from '../common/modal';
 import Backdrop from '../common/backdrop';
-import BlogList from './blogs/BlogList';
+import EngagementList from './engagements/EngagementList';
 import axios from 'axios';
 import imageUploader from '../common/image';
 import Spinner from '../common/Spinner';
 
-class CreateBlog extends Component {
+class CreateEngagement extends Component {
 	state = {
 		creating: false,
 		blogArray: [],
@@ -22,15 +22,13 @@ class CreateBlog extends Component {
 
 		this.imageEl = React.createRef();
 		this.titleEl = React.createRef();
-		this.descriptionEl = React.createRef();
-		this.bodyEl = React.createRef();
 	}
 
 	componentDidMount() {
 		this.fetchBlogs();
 	}
 
-	handleCreateBlog = () => {
+	handleCreateEngagement = () => {
 		this.setState({
 			creating: true
 		});
@@ -67,28 +65,24 @@ class CreateBlog extends Component {
 		// const image = this.imageEl.current.value;
 		const image = this.state;
 		const title = this.titleEl.current.value;
-		const description = this.descriptionEl.current.value;
-		const body = this.bodyEl.current.value;
 
 		// validation
 
-		if (title.trim().length === 0 || description.trim().length === 0 || body.trim().length === 0) {
+		if (title.trim().length === 0) {
 			return;
 		}
 		// const image = this.state;
-		const blog = { title, description, body, image };
+		const blog = { title, image };
 		console.log('newBlog', blog);
 
 		const requestBody = {
 			image_path: `${image}`,
-			title: `${title}`,
-			description: `${description}`,
-			body: `${body}`
+			title: `${title}`
 		};
 
 		// acces api
 		axios
-			.post('http://127.0.0.1:8000/photography/royalframesmedia/blog/', requestBody)
+			.post('http://127.0.0.1:8000/photography/royalframesmedia/engagements/', requestBody)
 			.then((response) => {
 				console.log('response', response);
 				this.fetchBlogs();
@@ -103,7 +97,7 @@ class CreateBlog extends Component {
 
 		// acces api
 		axios
-			.get('http://127.0.0.1:8000/photography/royalframesmedia/blog/')
+			.get('http://127.0.0.1:8000/photography/royalframesmedia/engagements/')
 			.then((response) => {
 				console.log('response', response.data.results);
 				const blogs = response.data.results;
@@ -125,25 +119,17 @@ class CreateBlog extends Component {
 				{(creating || specificBlog) && <Backdrop />}
 				{creating && (
 					<MyModal
-						title="Create blog"
+						title="Engagement images"
 						canCancel
 						canConfirm
 						onCancel={this.handleCancel}
 						onConfirm={this.handleConfirm}
-						confirmText="Post"
+						confirmText="Upload"
 					>
 						<form>
 							<div className="form-ctrl">
 								<label htmlFor="title">Title</label>
 								<input placeholder="Title here" type="text" id="title" ref={this.titleEl} />
-							</div>
-							<div className="form-ctrl">
-								<label htmlFor="description">describe</label>
-								<input type="text" id="description" ref={this.descriptionEl} />
-							</div>
-							<div className="form-ctrl">
-								<label htmlFor="body">Body</label>
-								<textarea placeholder="300 words max" id="body" ref={this.bodyEl} />
 							</div>
 							<div className="form-ctrl">
 								<label htmlFor="image">Image</label>
@@ -167,16 +153,20 @@ class CreateBlog extends Component {
 					</MyModal>
 				)}
 				<div className="hom-ctrl">
-					<h4>Create Blog</h4>
-					<button className="btn" onClick={this.handleCreateBlog}>
+					<h4>Upload Image</h4>
+					<button className="btn" onClick={this.handleCreateEngagement}>
 						{' '}
-						Click to create
+						Click to upload
 					</button>
 				</div>
-				{isLoading ? <Spinner /> : <BlogList blogs={blogArray} blogDetails={this.showBlogDetails} />}
+				{isLoading ? (
+					<Spinner />
+				) : (
+					<EngagementList engagements={blogArray} blogDetails={this.showBlogDetails} />
+				)}
 			</React.Fragment>
 		);
 	}
 }
 
-export default CreateBlog;
+export default CreateEngagement;
