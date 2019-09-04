@@ -28,34 +28,34 @@ const Header = () => {
 						</NavLink>
 					</li>
 					<li className="nav-item">
-						<NavLink className="nav-link" to="/about" exact>
+						<NavLink className="nav-link" to="/potraits" exact>
 							Potraits
 						</NavLink>
 					</li>
 					<li className="nav-item">
-						<NavLink className="nav-link" to="#" exact>
+						<NavLink className="nav-link" to="/engagements" exact>
 							Engagements
 						</NavLink>
 					</li>
 					<li className="nav-item">
-						<NavLink className="nav-link" to="/about" exact>
+						<NavLink className="nav-link" to="/kids" exact>
 							Little ones
 						</NavLink>
 					</li>
 					<li className="nav-item">
-						<NavLink className="nav-link" to="/about" exact>
+						<NavLink className="nav-link" to="/family" exact>
 							Family
 						</NavLink>
+					</li>
+					<li className="nav-item">
+						<a className="nav-link" href="/bumps">
+							Bumps
+						</a>
 					</li>
 					<li className="nav-item">
 						<NavLink className="nav-link" to="/signup" exact>
 							signup
 						</NavLink>
-					</li>
-					<li className="nav-item">
-						<a className="nav-link" href="#">
-							Bumps
-						</a>
 					</li>
 				</ul>
 			</div>
