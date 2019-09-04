@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import BlogItem from './BlogItem';
 import '../../../assets/styles/blogList.css';

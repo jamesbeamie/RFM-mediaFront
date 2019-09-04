@@ -6,7 +6,6 @@ import Backdrop from '../common/backdrop';
 import BlogList from './blogs/BlogList';
 import axios from 'axios';
 import imageUploader from '../common/image';
-// import loginContext from '../../common/loginContext';
 import Spinner from '../common/Spinner';
 
 class CreateBlog extends Component {
@@ -15,7 +14,7 @@ class CreateBlog extends Component {
 		blogArray: [],
 		isLoading: false,
 		specificBlog: null,
-		image: '/'
+		image: ''
 	};
 
 	constructor(props) {
@@ -30,8 +29,6 @@ class CreateBlog extends Component {
 	componentDidMount() {
 		this.fetchBlogs();
 	}
-
-	// static contextType = loginContext;
 
 	handleCreateBlog = () => {
 		this.setState({
@@ -53,25 +50,22 @@ class CreateBlog extends Component {
 		});
 	};
 
-	fileHandler = () => {
+	handleConfirm = () => {
+		this.setState({
+			creating: false
+		});
+
 		const selectFile = this.imageEl.current.value;
 		imageUploader({
 			image: selectFile
 		}).then((response) => {
-			console.log('responseyapicha', response);
+			// console.log('responseyapicha', response);
 			this.setState({
-				// eslint-disable-next-line indent
 				image: response.data.secure_url
 			});
 		});
-	};
-
-	handleConfirm = () => {
-		this.fileHandler();
-		this.setState({
-			creating: false
-		});
 		// const image = this.imageEl.current.value;
+		const image = this.state;
 		const title = this.titleEl.current.value;
 		const description = this.descriptionEl.current.value;
 		const body = this.bodyEl.current.value;
@@ -81,60 +75,12 @@ class CreateBlog extends Component {
 		if (title.trim().length === 0 || description.trim().length === 0 || body.trim().length === 0) {
 			return;
 		}
-		const picha = this.state;
-		const blog = { title, description, body, picha };
+		// const image = this.state;
+		const blog = { title, description, body, image };
 		console.log('newBlog', blog);
-		// const requestBody = {
-		// 	query: `
-		//         mutation {
-		//             createBlog(blogInput: {title: "${title}", description: "${description}", tag: "${tag}"}){
-		//                 _id
-		// 				title
-		// 				description
-		// 				tag
-		//             }
-		//         }
-		//     `
-		// };
-
-		// // get token from context
-
-		// const token = this.context.token;
-		// // acces api
-		// fetch('https://royalframes-photography.herokuapp.com/photography', {
-		// 	method: 'POST',
-		// 	body: JSON.stringify(requestBody),
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 		Authorization: 'Bearer ' + token
-		// 	}
-		// })
-		// 	.then((res) => {
-		// 		if (res.status !== 200 && res.status !== 201) {
-		// 			throw new Error('Error creating Blog');
-		// 		}
-		// 		return res.json();
-		// 	})
-		// 	.then((resData) => {
-		// 		console.log('resData', resData);
-		// 		// this.fetchHomes();
-		// 		this.setState((prevState) => {
-		// 			const updatedArray = [ ...prevState.blogArray ];
-		// 			updatedArray.push({
-		// 				_id: resData.data.createBlog._id,
-		// 				title: resData.data.createBlog.title,
-		// 				description: resData.data.createBlog.description,
-		// 				tag: resData.data.createBlog.tag
-		// 			});
-		// 			return { blogArray: updatedArray };
-		// 		});
-		// 	})
-		// 	.catch((err) => {
-		// 		console.log(err);
-		// 	});
 
 		const requestBody = {
-			image_path: `${picha}`,
+			image_path: `${image}`,
 			title: `${title}`,
 			description: `${description}`,
 			body: `${body}`
@@ -166,61 +112,10 @@ class CreateBlog extends Component {
 				});
 				return response.json();
 			})
-			// .then((response) => {
-			// 	console.log('fetchedData', response.data.results);
-
-			// 	return response.json();
-			// })
 			.catch((err) => {
 				console.log('err', err);
 			});
 	};
-
-	// fetchBlogs = () => {
-	// 	this.setState({ isLoading: true });
-	// 	const requestBody = {
-	// 		query: `
-	//             query {
-	//                 blogs{
-	//                     _id
-	//     				title
-	//     				description
-	//     				tag
-	//                 }
-	//             }
-	//         `
-	// 	};
-
-	// 	// acces api
-
-	// 	fetch('https://royalframes-photography.herokuapp.com/photography', {
-	// 		method: 'POST',
-	// 		body: JSON.stringify(requestBody),
-	// 		headers: {
-	// 			'Content-Type': 'application/json'
-	// 		}
-	// 	})
-	// 		.then((res) => {
-	// 			if (res.status !== 200 && res.status !== 201) {
-	// 				throw new Error('Error fetching Blogs');
-	// 			}
-	// 			return res.json();
-	// 		})
-	// 		.then((resData) => {
-	// 			console.log('fetchedData', resData);
-	// 			const blogs = resData.data.blogs;
-	// 			this.setState({
-	// 				blogArray: blogs,
-	// 				isLoading: false
-	// 			});
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log(err);
-	// 			this.setState({
-	// 				isLoading: false
-	// 			});
-	// 		});
-	// };
 
 	render() {
 		const { creating, blogArray, isLoading, specificBlog } = this.state;
