@@ -43,23 +43,6 @@ class AuthPage extends Component {
 			.catch((err) => {
 				console.log('err', err);
 			});
-
-		// fetch('http://127.0.0.1:8000/photography/royalframesmedia/users/', {
-		// 	method: 'POST',
-		// 	body: JSON.stringify({ requestBody }),
-		// 	headers: {
-		// 		'Content-Type': 'application/json'
-		// 	}
-		// })
-		// 	.then((res) => {
-		// 		if (res.status !== 200 && res.status !== 201) {
-		// 			throw new Error('Signup failed');
-		// 		}
-		// 	})
-		// 	.catch((err) => {
-		// 		console.log(err);
-		// 	});
-		// console.log(email, password);
 	};
 
 	render() {
