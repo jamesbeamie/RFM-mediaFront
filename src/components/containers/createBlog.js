@@ -5,7 +5,8 @@ import MyModal from '../common/modal';
 import Backdrop from '../common/backdrop';
 import BlogList from './blogs/BlogList';
 import axios from 'axios';
-import imageUploader from '../common/image';
+// import imageUploader from '../common/image';
+import { storage } from '../../firebase';
 import Spinner from '../common/Spinner';
 
 class CreateBlog extends Component {
@@ -14,7 +15,8 @@ class CreateBlog extends Component {
 		blogArray: [],
 		isLoading: false,
 		specificBlog: null,
-		image: ''
+		image: null,
+		url: ''
 	};
 
 	constructor(props) {
@@ -24,6 +26,8 @@ class CreateBlog extends Component {
 		this.titleEl = React.createRef();
 		this.descriptionEl = React.createRef();
 		this.bodyEl = React.createRef();
+
+		this.handleUpload = this.handleUpload.bind(this);
 	}
 
 	componentDidMount() {
@@ -36,6 +40,39 @@ class CreateBlog extends Component {
 		});
 	};
 
+	handleImage = (e) => {
+		if (e.target.files[0]) {
+			const image = e.target.files[0];
+			console.log('chukuwa', e.target.files[0]);
+			this.setState({
+				image
+			});
+		}
+	};
+
+	handleUpload = (e) => {
+		e.preventDefault();
+		const { image } = this.state;
+		const uploadTask = storage.ref(`images/${image.name}`).put(image);
+		uploadTask.on(
+			'state_changed',
+			(snapshot) => {
+				// shows progress %
+			},
+			(error) => {
+				console.log(error);
+			},
+			(complete) => {
+				// returns completion of upload
+				storage.ref('images').child(image.name).getDownloadURL().then((url) => {
+					console.log('imgurl', url);
+					this.setState({
+						image: url
+					});
+				});
+			}
+		);
+	};
 	handleCancel = () => {
 		this.setState({
 			creating: false,
@@ -55,17 +92,17 @@ class CreateBlog extends Component {
 			creating: false
 		});
 
-		const selectFile = this.imageEl.current.value;
-		imageUploader({
-			image: selectFile
-		}).then((response) => {
-			// console.log('responseyapicha', response);
-			this.setState({
-				image: response.data.secure_url
-			});
-		});
+		// const selectFile = this.imageEl.current.value;
+		// imageUploader({
+		// 	image: selectFile
+		// }).then((response) => {
+		// 	console.log('responseyapicha', JSON.stringify(response));
+		// 	this.setState({
+		// 		image: response.data.secure_url
+		// 	});
+		// });
 		// const image = this.imageEl.current.value;
-		const image = this.state;
+		// const image = this.state;
 		const title = this.titleEl.current.value;
 		const description = this.descriptionEl.current.value;
 		const body = this.bodyEl.current.value;
@@ -75,7 +112,7 @@ class CreateBlog extends Component {
 		if (title.trim().length === 0 || description.trim().length === 0 || body.trim().length === 0) {
 			return;
 		}
-		// const image = this.state;
+		const image = this.state;
 		const blog = { title, description, body, image };
 		console.log('newBlog', blog);
 
@@ -147,7 +184,10 @@ class CreateBlog extends Component {
 							</div>
 							<div className="form-ctrl">
 								<label htmlFor="image">Image</label>
-								<input type="file" id="image" ref={this.imageEl} />
+								<input type="file" onChange={this.handleImage} />
+								<button className="btn" onClick={this.handleUpload}>
+									Upload
+								</button>
 							</div>
 						</form>
 					</MyModal>

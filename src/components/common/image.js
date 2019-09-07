@@ -5,6 +5,6 @@ export default (imageUploader) => {
 	const formData = new FormData();
 	const headers = { 'Content-Type': 'application/x-wwww-form-urlencoded' };
 	formData.append('file', imageUploader.image);
-	formData.append('upload_preset', 'the-preset');
+	formData.append('upload_preset', 'new-preset');
 	return axios.post(path, formData, { headers });
 };
