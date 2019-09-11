@@ -36,7 +36,6 @@ const HomePage = () => {
 						<hr className="horzLine" />
 
 						<div className="text-left content">
-							<h6>photography services for:</h6>
 							<p>
 								<FontAwesomeIcon icon={faHeart} /> Family
 							</p>
@@ -82,7 +81,7 @@ const HomePage = () => {
 			<section>
 				<div className="row container-fluid bg-light text-center">
 					<div className="col-sm-4 padedcont">
-						<p className="fonti">&copy;RoyalFrames media</p>
+						<p className="fonti">&copy;RoyalFramesMedia</p>
 					</div>
 					<div className="col-sm-4 text-center paded">
 						<p className="fonti">
@@ -95,9 +94,6 @@ const HomePage = () => {
 					<div className="col-sm-4 paded">
 						<span className="soc-media">
 							<SocialIcon url="http://instagram.com/g_m_e23" />
-						</span>
-						<span className="soc-media">
-							<SocialIcon url="http://twitter.com/wafulajames9" />
 						</span>
 						<span className="soc-media">
 							<SocialIcon url="http://facebook.com/Jeamiejames" />

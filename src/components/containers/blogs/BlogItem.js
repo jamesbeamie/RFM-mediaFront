@@ -7,7 +7,7 @@ const BlogItem = (props) => (
 		<div>
 			<h3>Title: {props.title}</h3>
 			<h3>Body: {props.body}</h3>
-			<h3>image_path: {props.image_path}</h3>
+			<img src={props.image_path}/>
 			<h3>Created: {props.created_at}</h3>
 			<h3>updated: {props.updated_at}</h3>
 		</div>
