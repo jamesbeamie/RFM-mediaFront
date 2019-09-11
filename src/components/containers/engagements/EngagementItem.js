@@ -3,11 +3,9 @@ import React from 'react';
 import '../../../assets/styles/blogItem.css';
 
 const EngagementItem = (props) => (
-	<li key={props.blogId} className="home_list-item">
-		<div>
-			<h3>image_path: {props.image_path}</h3>
-		</div>
-	</li>
+	<div key={props.blogId} className="col-md-4 ">
+		<img className="img-fluid" src={props.image_path} />
+	</div>
 );
 
 export default EngagementItem;

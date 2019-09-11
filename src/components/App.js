@@ -10,7 +10,7 @@ import CreateBlog from './containers/createBlog';
 import PageNotFound from './common/PageNotFound';
 import CreateEngagement from './containers/createEngagement';
 import CreateBump from './containers/createBump';
-import CreateChildren from './containers/createChildren';
+import CreateChild from './containers/createChildren';
 import CreateFamily from './containers/createFamily';
 import CreatePotrait from './containers/createPotrait';
 
@@ -27,7 +27,7 @@ const App = () => {
 				<Route path="/blog" component={CreateBlog} />
 				<Route path="/engagements" component={CreateEngagement} />
 				<Route path="/bumps" component={CreateBump} />
-				<Route path="/kids" component={CreateChildren} />
+				<Route path="/kids" component={CreateChild} />
 				<Route path="/family" component={CreateFamily} />
 				<Route path="/potraits" component={CreatePotrait} />
 				<Route component={PageNotFound} />
