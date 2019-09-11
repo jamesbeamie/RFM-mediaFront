@@ -9,7 +9,7 @@ const BumpList = (props) => {
 		console.log('blogths', props);
 		return <BumpItem key={blog.id} blogId={blog.id} image_path={blog.image_path} />;
 	});
-	return <ul className="home_list">{fetchedBumps}</ul>;
+	return <div className="row ">{fetchedBumps}</div>;
 };
 
 export default BumpList;
