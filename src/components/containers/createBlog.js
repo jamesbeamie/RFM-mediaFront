@@ -228,7 +228,7 @@ class CreateBlog extends Component {
 						Click to create
 					</button>
 				</div>
-				<div className="jumbotron">
+				<div className="">
 					{isLoading ? <Spinner /> : <BlogList blogs={blogArray} blogDetails={this.showBlogDetails} />}
 				</div>
 			</React.Fragment>

@@ -20,7 +20,7 @@ const BlogList = (props) => {
 			/>
 		);
 	});
-	return <ul className="home_list">{fetchedBlogs}</ul>;
+	return <div className="container">{fetchedBlogs}</div>;
 };
 
 export default BlogList;

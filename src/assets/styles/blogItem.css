@@ -1,7 +1,8 @@
 .home_list-item {
 	margin: 1rem 0;
 	padding: 1rem;
-	border: 1px solid rgb(58, 122, 58);
+	border: 1px solid rgb(204, 196, 204);
+	border-radius: 5px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -21,5 +22,5 @@
 	margin: 0;
 	padding: 10px 0;
 	font-size: .8rem;
-	color: rgb(7, 192, 192);
+	/* color: rgb(7, 192, 192); */
 }
