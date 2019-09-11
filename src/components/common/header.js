@@ -24,37 +24,37 @@ const Header = () => {
 				<ul className="navbar-nav ml-auto">
 					<li className="nav-item active">
 						<NavLink className="nav-link" to="/blog" exact>
-							blog
+							BLOG
 						</NavLink>
 					</li>
 					<li className="nav-item">
 						<NavLink className="nav-link" to="/potraits" exact>
-							Potraits
+							POTRAITS
 						</NavLink>
 					</li>
 					<li className="nav-item">
 						<NavLink className="nav-link" to="/engagements" exact>
-							Engagements
+							ENGAGEMENTS
 						</NavLink>
 					</li>
 					<li className="nav-item">
 						<NavLink className="nav-link" to="/kids" exact>
-							Little ones
+							LITTLE ONES
 						</NavLink>
 					</li>
 					<li className="nav-item">
 						<NavLink className="nav-link" to="/family" exact>
-							Family
+							FAMILY
 						</NavLink>
 					</li>
 					<li className="nav-item">
 						<a className="nav-link" href="/bumps">
-							Bumps
+							BUMPS
 						</a>
 					</li>
 					<li className="nav-item">
 						<NavLink className="nav-link" to="/signup" exact>
-							signup
+							SIGNUP
 						</NavLink>
 					</li>
 				</ul>

@@ -1,34 +1,39 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import '../../assets/styles/blogModal.css';
 import '../../assets/styles/blog.css';
 import MyModal from '../common/modal';
 import Backdrop from '../common/backdrop';
 import BlogList from './blogs/BlogList';
 import axios from 'axios';
-// import imageUploader from '../common/image';
+import createBlogAction from '../actions/createBlog';
 import { storage } from '../../firebase';
 import Spinner from '../common/Spinner';
 
 class CreateBlog extends Component {
-	state = {
-		creating: false,
-		blogArray: [],
-		isLoading: false,
-		specificBlog: null,
-		image: null,
-		url: ''
-	};
-
 	constructor(props) {
 		super(props);
-
-		this.imageEl = React.createRef();
-		this.titleEl = React.createRef();
-		this.descriptionEl = React.createRef();
-		this.bodyEl = React.createRef();
+		this.state = {
+			creating: false,
+			blogArray: [],
+			isLoading: false,
+			specificBlog: null,
+			title: '',
+			description: '',
+			body: '',
+			image: null,
+			url: ''
+		};
 
 		this.handleUpload = this.handleUpload.bind(this);
 	}
+
+	onChange = (e) => {
+		e.preventDefault();
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+	};
 
 	componentDidMount() {
 		this.fetchBlogs();
@@ -88,51 +93,46 @@ class CreateBlog extends Component {
 	};
 
 	handleConfirm = () => {
-		this.setState({
-			creating: false
-		});
+		event.preventDefault();
+		const { title, description, body, image } = this.state;
+		const blogData = { title, description, body, image };
+		console.log('blogData', this.state);
 
-		// const selectFile = this.imageEl.current.value;
-		// imageUploader({
-		// 	image: selectFile
-		// }).then((response) => {
-		// 	console.log('responseyapicha', JSON.stringify(response));
-		// 	this.setState({
-		// 		image: response.data.secure_url
-		// 	});
+		this.props.createBlogAction(blogData);
+		// this.setState({
+		// 	creating: false
 		// });
-		// const image = this.imageEl.current.value;
+
+		// const title = this.titleEl.current.value;
+		// const description = this.descriptionEl.current.value;
+		// const body = this.bodyEl.current.value;
+
+		// // validation
+
+		// if (title.trim().length === 0 || description.trim().length === 0 || body.trim().length === 0) {
+		// 	return;
+		// }
 		// const image = this.state;
-		const title = this.titleEl.current.value;
-		const description = this.descriptionEl.current.value;
-		const body = this.bodyEl.current.value;
+		// const blog = { title, description, body, image };
+		// console.log('newBlog', blog);
 
-		// validation
+		// const requestBody = {
+		// 	image_path: `${image}`,
+		// 	title: `${title}`,
+		// 	description: `${description}`,
+		// 	body: `${body}`
+		// };
 
-		if (title.trim().length === 0 || description.trim().length === 0 || body.trim().length === 0) {
-			return;
-		}
-		const image = this.state;
-		const blog = { title, description, body, image };
-		console.log('newBlog', blog);
-
-		const requestBody = {
-			image_path: `${image}`,
-			title: `${title}`,
-			description: `${description}`,
-			body: `${body}`
-		};
-
-		// acces api
-		axios
-			.post('http://127.0.0.1:8000/photography/royalframesmedia/blog/', requestBody)
-			.then((response) => {
-				console.log('response', response);
-				this.fetchBlogs();
-			})
-			.catch((err) => {
-				console.log('err', err);
-			});
+		// // acces api
+		// axios
+		// 	.post('http://127.0.0.1:8000/photography/royalframesmedia/blog/', requestBody)
+		// 	.then((response) => {
+		// 		console.log('response', response);
+		// 		this.fetchBlogs();
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log('err', err);
+		// 	});
 	};
 
 	fetchBlogs = () => {
@@ -154,7 +154,6 @@ class CreateBlog extends Component {
 				console.log('err', err);
 			});
 	};
-
 	render() {
 		const { creating, blogArray, isLoading, specificBlog } = this.state;
 		return (
@@ -172,15 +171,31 @@ class CreateBlog extends Component {
 						<form>
 							<div className="form-ctrl">
 								<label htmlFor="title">Title</label>
-								<input placeholder="Title here" type="text" id="title" ref={this.titleEl} />
+								<input
+									placeholder="Title here"
+									type="text"
+									name="title"
+									onChange={this.onChange}
+									value={this.state.title}
+								/>
 							</div>
 							<div className="form-ctrl">
 								<label htmlFor="description">describe</label>
-								<input type="text" id="description" ref={this.descriptionEl} />
+								<input
+									type="text"
+									name="description"
+									onChange={this.onChange}
+									value={this.state.description}
+								/>
 							</div>
 							<div className="form-ctrl">
 								<label htmlFor="body">Body</label>
-								<textarea placeholder="300 words max" id="body" ref={this.bodyEl} />
+								<textarea
+									placeholder="300 words max"
+									name="body"
+									onChange={this.onChange}
+									value={this.state.body}
+								/>
 							</div>
 							<div className="form-ctrl">
 								<label htmlFor="image">Image</label>
@@ -213,10 +228,18 @@ class CreateBlog extends Component {
 						Click to create
 					</button>
 				</div>
-				{isLoading ? <Spinner /> : <BlogList blogs={blogArray} blogDetails={this.showBlogDetails} />}
+				<div className="jumbotron">
+					{isLoading ? <Spinner /> : <BlogList blogs={blogArray} blogDetails={this.showBlogDetails} />}
+				</div>
 			</React.Fragment>
 		);
 	}
 }
 
-export default CreateBlog;
+// export default CreateBlog;
+
+const mapStateToProps = (state) => ({
+	newBlog: state.blogReducer.newBlog,
+	blogs: state.blogReducer.blogs.data
+});
+export default connect(mapStateToProps, { createBlogAction })(CreateBlog);
