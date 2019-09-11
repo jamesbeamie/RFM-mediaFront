@@ -9,7 +9,7 @@ const FamilyList = (props) => {
 		console.log('blogths', props);
 		return <FamilyItem key={blog.id} blogId={blog.id} image_path={blog.image_path} />;
 	});
-	return <ul className="home_list">{fetchedEngagements}</ul>;
+	return <div className="row">{fetchedEngagements}</div>;
 };
 
 export default FamilyList;
