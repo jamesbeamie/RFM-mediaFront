@@ -16,7 +16,7 @@ const createBlogAction = (blogData) => (dispatch) => {
 				body: blogData.body
 			}
 		})
-		.then((res) => res.json())
+		// .then((res) => res.json())
 		.then((blogdata) =>
 			dispatch({
 				type: CREATE_BLOGS_SUCCESS,

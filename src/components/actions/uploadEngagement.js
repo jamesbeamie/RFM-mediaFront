@@ -14,7 +14,7 @@ const uploadEngagementAction = (engagementData) => (dispatch) => {
 				title: engagementData.title
 			}
 		})
-		.then((res) => res.json())
+		// .then((res) => res.json())
 		.then((engagementdata) =>
 			dispatch({
 				type: UPLOAD_ENGAGEMENT_SUCCESS,
