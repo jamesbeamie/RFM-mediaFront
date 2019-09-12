@@ -14,7 +14,7 @@ const uploadPotraitAction = (engagementData) => (dispatch) => {
 				title: engagementData.title
 			}
 		})
-		.then((res) => res.json())
+		// .then((res) => res.json())
 		.then((engagementdata) =>
 			dispatch({
 				type: UPLOAD_POTRAIT_SUCCESS,

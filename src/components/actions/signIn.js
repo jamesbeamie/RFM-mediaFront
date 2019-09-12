@@ -17,12 +17,12 @@ const signInAction = (signInData) => (dispatch) => {
 				}
 			}
 		})
-		.then((res) => res.json())
+		// .then((res) => res.json())
 		.then((logindata) =>
 			dispatch({
 				type: SIGNIN_SUCCESS,
 				payload: logindata
-			})
+			}, window.localStorage.setItem('token', ''))
 		)
 		.catch((err) =>
 			dispatch({

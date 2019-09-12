@@ -289,6 +289,7 @@ class CreateBump extends Component {
 	};
 	render() {
 		const { creating, bumpArray, isLoading, specificBlog } = this.state;
+		const userToken = localStorage.getItem('token');
 		return (
 			<React.Fragment>
 				{(creating || specificBlog) && <Backdrop />}
@@ -336,13 +337,15 @@ class CreateBump extends Component {
 						<h4>tag: {specificBlog.tag}</h4>
 					</MyModal>
 				)}
-				<div className="hom-ctrl">
-					<h4>Upload Bump</h4>
-					<button className="btn" onClick={this.handleCreateBump}>
-						{' '}
-						Click to Upload
-					</button>
-				</div>
+				{userToken && (
+					<div className="hom-ctrl">
+						<h4>Upload Bump</h4>
+						<button className="btn" onClick={this.handleCreateBump}>
+							{' '}
+							Click to Upload
+						</button>
+					</div>
+				)}
 				<div className="">
 					{isLoading ? <Spinner /> : <BumpList bumps={bumpArray} blogDetails={this.showBlogDetails} />}
 				</div>

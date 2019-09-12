@@ -14,7 +14,7 @@ const uploadBumpAction = (bumpData) => (dispatch) => {
 				title: bumpData.title,
 			}
 		})
-		.then((res) => res.json())
+		// .then((res) => res.json())
 		.then((blogdata) =>
 			dispatch({
 				type: UPLOAD_BUMP_SUCCESS,

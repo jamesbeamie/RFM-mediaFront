@@ -120,6 +120,7 @@ class CreateChild extends Component {
 	};
 	render() {
 		const { creating, childrenArray, isLoading, specificBlog } = this.state;
+		const userToken = localStorage.getItem('token');
 		return (
 			<React.Fragment>
 				{(creating || specificBlog) && <Backdrop />}
@@ -167,13 +168,15 @@ class CreateChild extends Component {
 						<h4>tag: {specificBlog.tag}</h4>
 					</MyModal>
 				)}
-				<div className="hom-ctrl">
-					<h4>Upload Child</h4>
-					<button className="btn" onClick={this.handleCreateChild}>
-						{' '}
-						Click to Upload
-					</button>
-				</div>
+				{userToken && (
+					<div className="hom-ctrl">
+						<h4>Upload Child</h4>
+						<button className="btn" onClick={this.handleCreateChild}>
+							{' '}
+							Click to Upload
+						</button>
+					</div>
+				)}
 				<div className="">
 					{isLoading ? <Spinner /> : <BumpList bumps={childrenArray} blogDetails={this.showBlogDetails} />}
 				</div>

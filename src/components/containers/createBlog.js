@@ -156,6 +156,7 @@ class CreateBlog extends Component {
 	};
 	render() {
 		const { creating, blogArray, isLoading, specificBlog } = this.state;
+		const userToken = localStorage.getItem('token');
 		return (
 			<React.Fragment>
 				{(creating || specificBlog) && <Backdrop />}
@@ -221,13 +222,15 @@ class CreateBlog extends Component {
 						<h4>tag: {specificBlog.tag}</h4>
 					</MyModal>
 				)}
-				<div className="hom-ctrl">
-					<h4>Create Blog</h4>
-					<button className="btn" onClick={this.handleCreateBlog}>
-						{' '}
-						Click to create
-					</button>
-				</div>
+				{userToken && (
+					<div className="hom-ctrl">
+						<h4>Create Blog</h4>
+						<button className="btn" onClick={this.handleCreateBlog}>
+							{' '}
+							Click to create
+						</button>
+					</div>
+				)}
 				<div className="">
 					{isLoading ? <Spinner /> : <BlogList blogs={blogArray} blogDetails={this.showBlogDetails} />}
 				</div>
