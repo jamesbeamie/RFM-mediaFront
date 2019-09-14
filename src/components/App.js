@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import HomePage from './componentFiles/home';
 import Header from './common/header';
 import AuthPage from './componentFiles/signUp';
@@ -13,15 +13,17 @@ import CreateBump from './containers/createBump';
 import CreateChild from './containers/createChildren';
 import CreateFamily from './containers/createFamily';
 import CreatePotrait from './containers/createPotrait';
-
+import LogOut from './componentFiles/logout';
 const App = () => {
+	const userToken = localStorage.getItem('token');
 	return (
 		<div>
 			<Header />
 			<Switch>
 				<Route exact path="/" component={HomePage} />
-				<Route path="/signup" component={AuthPage} />
-				<Route path="/signin" component={LoginPage} />
+				{!userToken && <Route path="/signup" component={AuthPage} />}
+				{!userToken && <Route path="/signin" component={LoginPage} />}
+				{userToken && <Redirect from="/signin" to="/" exact />}
 				<Route path="/link-to-reset" component={ResetRequest} />
 				<Route path="/authenticate-reset" component={PwdReset} />
 				<Route path="/blog" component={CreateBlog} />
@@ -30,6 +32,8 @@ const App = () => {
 				<Route path="/kids" component={CreateChild} />
 				<Route path="/family" component={CreateFamily} />
 				<Route path="/potraits" component={CreatePotrait} />
+				{userToken && <Route path="/logout" component={LogOut} />}
+				{!userToken && <Redirect from="/logout" to="/" exact />}
 				<Route component={PageNotFound} />
 			</Switch>
 		</div>

@@ -3,6 +3,7 @@ import '../../assets/styles/header.css';
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
+	const userToken = localStorage.getItem('token');
 	return (
 		<nav className="navbar fixed-top navbar-expand-sm navbar-light bg-light navigation-style text-center">
 			<a className="navbar-brand" href="/">
@@ -52,11 +53,20 @@ const Header = () => {
 							BUMPS
 						</a>
 					</li>
-					<li className="nav-item">
-						<NavLink className="nav-link" to="/signup" exact>
-							SIGNUP
-						</NavLink>
-					</li>
+					{!userToken && (
+						<li className="nav-item">
+							<NavLink className="nav-link" to="/signin" exact>
+								SIGNIN
+							</NavLink>
+						</li>
+					)}
+					{userToken && (
+						<li className="nav-item">
+							<NavLink className="nav-link" to="/logout" exact>
+								LOGOUT
+							</NavLink>
+						</li>
+					)}
 				</ul>
 			</div>
 		</nav>

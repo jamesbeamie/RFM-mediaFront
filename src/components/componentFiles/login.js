@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import '../../assets/styles/auth.css';
+import HomePage from './home';
 import signInAction from '../actions/signIn';
 class LoginPage extends Component {
 	constructor(props) {
@@ -30,21 +31,37 @@ class LoginPage extends Component {
 
 	render() {
 		console.log('ma-auth', this.props);
+		const userToken = localStorage.getItem('token');
 		return (
-			<form className="auth-form" onSubmit={this.handleSignUp}>
-				<div className="form-ctrl">
-					<label htmlFor="email">E-mail:</label>
-					<input type="email" name="email" onChange={this.onChange} value={this.state.email} />
-				</div>
-				<div className="form-ctrl">
-					<label htmlFor="password">Password:</label>
-					<input type="password" name="password" onChange={this.onChange} value={this.state.password} />
-				</div>
-				<div className="form-axon">
-					<button type="submit">Login</button>
-					<a href="/link-to-reset">Forgot password?</a>
-				</div>
-			</form>
+			<React.Fragment>
+				{!userToken ? (
+					<form className="auth-form" onSubmit={this.handleSignUp}>
+						<div className="form-ctrl">
+							<label htmlFor="email">E-mail:</label>
+							<input type="email" name="email" onChange={this.onChange} value={this.state.email} />
+						</div>
+						<div className="form-ctrl">
+							<label htmlFor="password">Password:</label>
+							<input
+								type="password"
+								name="password"
+								onChange={this.onChange}
+								value={this.state.password}
+							/>
+						</div>
+						<div className="form-axon">
+							<button type="submit">Login</button>
+							<a href="/signup">Or signup</a>
+						</div>
+						<br />
+						<div className="form-axon">
+							<a href="/link-to-reset">Forgot password?</a>
+						</div>
+					</form>
+				) : (
+					<HomePage />
+				)}
+			</React.Fragment>
 		);
 	}
 }
