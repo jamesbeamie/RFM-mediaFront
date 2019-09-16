@@ -83,12 +83,14 @@ class CreateBlog extends Component {
 			creating: false,
 			specificBlog: null
 		});
+		this.fetchBlogs();
 	};
 
-	showBlogDetails = (blogId) => {
-		this.setState((prevState) => {
-			const selectedBlog = prevState.blogArray.find((blog) => blog._id === blogId);
-			return { specificBlog: selectedBlog };
+	showBlogDetails = (slug) => {
+		const { blogArray } = this.state;
+		const selectedBlog = blogArray.find((blog) => blog.slug === slug);
+		this.setState({
+			specificBlog: selectedBlog
 		});
 	};
 
@@ -99,35 +101,16 @@ class CreateBlog extends Component {
 		console.log('blogData', this.state);
 
 		this.props.createBlogAction(blogData);
-		// this.setState({
-		// 	creating: false
-		// });
+		this.setState({
+			creating: false
+		});
+	};
 
-		// const title = this.titleEl.current.value;
-		// const description = this.descriptionEl.current.value;
-		// const body = this.bodyEl.current.value;
-
-		// // validation
-
-		// if (title.trim().length === 0 || description.trim().length === 0 || body.trim().length === 0) {
-		// 	return;
-		// }
-		// const image = this.state;
-		// const blog = { title, description, body, image };
-		// console.log('newBlog', blog);
-
-		// const requestBody = {
-		// 	image_path: `${image}`,
-		// 	title: `${title}`,
-		// 	description: `${description}`,
-		// 	body: `${body}`
-		// };
-
-		// // acces api
+	handleDelete = (slug) => {
+		// event.preventDefault();
 		// axios
-		// 	.post('http://127.0.0.1:8000/photography/royalframesmedia/blog/', requestBody)
-		// 	.then((response) => {
-		// 		console.log('response', response);
+		// 	.delete(`http://127.0.0.1:8000/photography/royalframesmedia/blog/${slug}`)
+		// 	.then(() => {
 		// 		this.fetchBlogs();
 		// 	})
 		// 	.catch((err) => {
@@ -214,12 +197,20 @@ class CreateBlog extends Component {
 						canCancel
 						canConfirm
 						onCancel={this.handleCancel}
-						onConfirm={this.handleConfirm}
-						confirmText=""
+						onConfirm={this.handleDelete(specificBlog.slug)}
+						confirmText="Delete"
 					>
-						<h4>title: {specificBlog.title}</h4>
-						<p>Description: {specificBlog.description}</p>
-						<h4>tag: {specificBlog.tag}</h4>
+						<div className="container">
+							<div className="row">
+								<div className="col-md-6">
+									<h4>title: {specificBlog.title}</h4>
+									<p>body: {specificBlog.body}</p>
+								</div>
+								<div className="col-md-6">
+									<img className="img-fluid" src={specificBlog.image_path} />
+								</div>
+							</div>
+						</div>
 					</MyModal>
 				)}
 				{userToken && (

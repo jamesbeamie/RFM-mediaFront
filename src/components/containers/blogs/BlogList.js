@@ -13,6 +13,7 @@ const BlogList = (props) => {
 				blogId={blog.id}
 				title={blog.title}
 				body={blog.body}
+				slug={blog.slug}
 				image_path={blog.image_path}
 				created_at={blog.created_at}
 				updated_at={blog.updated_at}

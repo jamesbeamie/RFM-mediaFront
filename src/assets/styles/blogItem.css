@@ -8,19 +8,14 @@
 	align-items: center;
 }
 
-.home_list-item h3 {
-	margin: 0;
-	font-size: 1.3rem;
-	color: rgb(31, 90, 71);
-}
 .home_list-item h5 {
 	margin: 0;
 	font-size: 1.3rem;
-	color: rgb(84, 117, 106);
+	color: rgb(73, 45, 73);
 }
 .home_list-item p {
 	margin: 0;
-	padding: 10px 0;
+	/* padding: 10px 0; */
 	font-size: .8rem;
 	/* color: rgb(7, 192, 192); */
 }

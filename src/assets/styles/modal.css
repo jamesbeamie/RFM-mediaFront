@@ -4,12 +4,13 @@
 	position: fixed;
 	top: 20vh;
 	left: 5%;
-	color: white;
+	color: rgb(10, 10, 10);
+	/* height: 100vh; */
 	z-index: 100;
 }
 .MyModal_header {
 	padding: 1rem;
-	background: rgb(108, 5, 131)
+	/* background: rgb(108, 5, 131) */
 }
 .MyModal_header h1 {
 	margin: 0;
@@ -17,15 +18,17 @@
 }
 .MyModal_content {
 	padding: 1rem;
+	background: rgb(255, 254, 255)
+	/* ba */
 }
 .MyModal_actions {
 	display: flex;
-	justify-content: flex-end;
+	/* justify-content: flex-end; */
 	padding: 1rem;
 }
 @media (min-width: 768px) {
 	.MyModal {
-		width: 30rem;
-		left: calc((100% - 30rem) / 2);
+		width: 60rem;
+		left: calc((100% - 60rem) / 2);
 	}
 }

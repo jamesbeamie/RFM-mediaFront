@@ -4,5 +4,6 @@
 	height: 100vh;
 	top: 0;
 	left: 0;
-	background: rgba(144, 73, 156, 0.7);
+	background: rgb(235, 230, 236);
+	z-index: 80;
 }
