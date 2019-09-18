@@ -1,7 +1,7 @@
 .MyModal {
 	width: 80%;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-	position: fixed;
+	position: absolute;
 	top: 20vh;
 	left: 5%;
 	color: rgb(10, 10, 10);

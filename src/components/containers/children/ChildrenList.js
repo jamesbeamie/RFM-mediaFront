@@ -9,7 +9,7 @@ const ChildrenList = (props) => {
 		console.log('blogths', props);
 		return <ChildrenItem key={blog.id} blogId={blog.id} image_path={blog.image_path} />;
 	});
-	return <ul className="home_list">{fetchedChildren}</ul>;
+	return <div className="row">{fetchedChildren}</div>;
 };
 
 export default ChildrenList;

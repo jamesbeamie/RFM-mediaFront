@@ -4,20 +4,18 @@ import '../../../assets/styles/blogItem.css';
 
 const BlogItem = (props) => (
 	<div className="row home_list-item">
-		<div className="col-md-4 text-right">
-			<img className="img-fluid" src={props.image_path} />
+		<div className="col-md-6 text-right furem">
+			<button className="" onClick={props.specificBlog.bind(this, props.slug)}>
+				<img className="img-fluid" src={props.image_path} />
+			</button>
 		</div>
-		<div key={props.blogId} className="col-md-8">
-			<h5>Title: {props.title}</h5>
-			<p>Body: {props.body}</p>
-			<p>Created: {props.created_at}</p>
-			<p>updated: {props.updated_at}</p>
+		<div key={props.blogId} className="col-md-6">
+			<h6>{props.title}</h6>
+			<p>{props.body}</p>
+			<p className="deti">Created: {new Date(props.created_at).toLocaleDateString()}</p>
+			<p>updated: {new Date(props.updated_at).toLocaleDateString()}</p>
 			<div>
-				<React.Fragment>
-					<button className="btn" onClick={props.specificBlog.bind(this, props.slug)}>
-						read
-					</button>
-				</React.Fragment>
+				<React.Fragment />
 			</div>
 		</div>
 	</div>
