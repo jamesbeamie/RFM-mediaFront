@@ -26,48 +26,48 @@ class Header extends React.Component {
 					<span className="navbar-toggler-icon" />
 				</button>
 
-				<div className="collapse navbar-collapse" id="navbarSupportedContent">
+				<div className="collapse navbar-collapse linki" id="navbarSupportedContent">
 					<ul className="navbar-nav ml-auto">
 						<li className="nav-item active">
-							<NavLink className="nav-link" to="/blog" exact>
+							<NavLink className="nav-link linki" to="/blog" exact>
 								BLOG
 							</NavLink>
 						</li>
 						<li className="nav-item">
-							<NavLink className="nav-link" to="/potraits" exact>
+							<NavLink className="nav-link linki" to="/potraits" exact>
 								POTRAITS
 							</NavLink>
 						</li>
 						<li className="nav-item">
-							<NavLink className="nav-link" to="/engagements" exact>
+							<NavLink className="nav-link linki" to="/engagements" exact>
 								ENGAGEMENTS
 							</NavLink>
 						</li>
 						<li className="nav-item">
-							<NavLink className="nav-link" to="/kids" exact>
+							<NavLink className="nav-link linki" to="/kids" exact>
 								LITTLE ONES
 							</NavLink>
 						</li>
 						<li className="nav-item">
-							<NavLink className="nav-link" to="/family" exact>
+							<NavLink className="nav-link linki" to="/family" exact>
 								FAMILY
 							</NavLink>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="/bumps">
+							<a className="nav-link linki" href="/bumps">
 								BUMPS
 							</a>
 						</li>
 						{!userToken && (
 							<li className="nav-item">
-								<NavLink className="nav-link" to="/signin" exact>
+								<NavLink className="nav-link linki" to="/signin" exact>
 									SIGNIN
 								</NavLink>
 							</li>
 						)}
 						{userToken && (
 							<li className="nav-item">
-								<NavLink className="nav-link" to="/" onClick={this.logout} exact>
+								<NavLink className="nav-link linki" to="/" onClick={this.logout} exact>
 									LOGOUT
 								</NavLink>
 							</li>
