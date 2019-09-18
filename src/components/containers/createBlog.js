@@ -179,6 +179,7 @@ class CreateBlog extends Component {
 									name="body"
 									onChange={this.onChange}
 									value={this.state.body}
+									maxLength = "500"
 								/>
 							</div>
 							<div className="form-ctrl">
@@ -200,16 +201,13 @@ class CreateBlog extends Component {
 						onConfirm={this.handleDelete(specificBlog.slug)}
 						confirmText="Delete"
 					>
-						<div className="container">
-							<div className="row">
-								<div className="col-md-6">
-									<h4>title: {specificBlog.title}</h4>
-									<p>body: {specificBlog.body}</p>
+						<div className="container ">
+								<div className="col-md-12">
+									<p>{specificBlog.body}</p>
 								</div>
-								<div className="col-md-6">
+								<div className="col-md-12">
 									<img className="img-fluid" src={specificBlog.image_path} />
 								</div>
-							</div>
 						</div>
 					</MyModal>
 				)}

@@ -4,7 +4,7 @@ import '../../assets/styles/blogModal.css';
 import '../../assets/styles/blog.css';
 import MyModal from '../common/modal';
 import Backdrop from '../common/backdrop';
-// import BlogList from './blogs/BlogList';
+import ChildrenList from './children/ChildrenList';
 import BumpList from './bumps/BumpList';
 import axios from 'axios';
 // import uploadChildrenAction from '../actions/uploadBump';
@@ -178,7 +178,7 @@ class CreateChild extends Component {
 					</div>
 				)}
 				<div className="">
-					{isLoading ? <Spinner /> : <BumpList bumps={childrenArray} blogDetails={this.showBlogDetails} />}
+					{isLoading ? <Spinner /> : <ChildrenList childrens={childrenArray} blogDetails={this.showBlogDetails} />}
 				</div>
 			</React.Fragment>
 		);

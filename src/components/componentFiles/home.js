@@ -25,59 +25,7 @@ const HomePage = () => {
 					</Carousel>
 				</div>
 			</section>
-			<div className="container-fluid homu">
-				<div className="row ">
-					<div className="col-sm-12 text-center ">
-						<h4>About Us</h4>
-						<hr className="horzLine" />
-					</div>
-					<div className="col-sm-6 text-center paded">
-						<h4>We do...</h4>
-						<hr className="horzLine" />
 
-						<div className="text-left content">
-							<p>
-								<FontAwesomeIcon icon={faHeart} /> Family
-							</p>
-							<p>
-								<FontAwesomeIcon icon={faCamera} /> Potraits
-							</p>
-							<p>
-								<FontAwesomeIcon icon={faChild} /> Baby Bumps
-							</p>
-							<p>
-								<FontAwesomeIcon icon={faRing} /> Engagements
-							</p>
-							<p>
-								<FontAwesomeIcon icon={faBaby} /> Little ones
-							</p>
-						</div>
-					</div>
-					<div className="col-sm-6 text-center pad-cont">
-						<img
-							src="src/assets/images/RFM_NP_NC_2.jpg"
-							className="img-responsive img-fluid"
-							alt="..."
-						/>
-					</div>
-				</div>
-
-				<div className="row jumbotron bgkala">
-					<div className="col-sm-6 text-center">
-						<img src="src/assets/images/RFP_D_3b.jpg" className="img-fluid" alt="..." />
-					</div>
-					<div className="col-sm-6 text-center">
-						<h4>Our passion</h4>
-						<hr className="horzLine" />
-						<p>Is to create life long stories</p>
-						<p>and deliver them in the most epic</p>
-						<p>way. Building trust, transparency</p>
-						<p>and putting our skills to the </p>
-						<p> ultimate level of practice.</p>
-					</div>
-				</div>
-			</div>
-			<section />
 			<section>
 				<div className="row container-fluid bg-light text-center">
 					<div className="col-sm-4 padedcont">

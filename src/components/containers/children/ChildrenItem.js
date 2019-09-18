@@ -1,13 +1,15 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import '../../../assets/styles/blogItem.css';
+const styles = {
+	paddingLeft: '0',
+	paddingRight: '0',
+  };
 
 const ChildrenItem = (props) => (
-	<li key={props.blogId} className="home_list-item">
-		<div>
-			<h3>image_path: {props.image_path}</h3>
-		</div>
-	</li>
+	<div key={props.blogId} className="col-md-4 furem" style={styles}>
+		<img className="img-fluid picha" src={props.image_path} />
+	</div>
 );
 
 export default ChildrenItem;
