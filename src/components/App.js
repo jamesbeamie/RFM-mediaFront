@@ -13,7 +13,6 @@ import CreateBump from './containers/createBump';
 import CreateChild from './containers/createChildren';
 import CreateFamily from './containers/createFamily';
 import CreatePotrait from './containers/createPotrait';
-import LogOut from './componentFiles/logout';
 const App = () => {
 	const userToken = localStorage.getItem('token');
 	return (
@@ -32,8 +31,6 @@ const App = () => {
 				<Route path="/kids" component={CreateChild} />
 				<Route path="/family" component={CreateFamily} />
 				<Route path="/potraits" component={CreatePotrait} />
-				{userToken && <Route path="/logout" component={LogOut} />}
-				{!userToken && <Redirect from="/logout" to="/" exact />}
 				<Route component={PageNotFound} />
 			</Switch>
 		</div>
