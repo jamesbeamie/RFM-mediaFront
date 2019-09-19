@@ -16,13 +16,20 @@ class CreateBlog extends Component {
 		this.state = {
 			creating: false,
 			blogArray: [],
+			bumpArray: [],
+			childrenArray: [],
+			engagementArray: [],
+			familyArray: [],
+			potraitArray: [],
 			isLoading: false,
 			specificBlog: null,
 			title: '',
 			description: '',
 			body: '',
 			image: null,
-			url: ''
+			url: '',
+			mapicha: [],
+			blogImages: []
 		};
 
 		this.handleUpload = this.handleUpload.bind(this);
@@ -37,6 +44,14 @@ class CreateBlog extends Component {
 
 	componentDidMount() {
 		this.fetchBlogs();
+		this.fetchBumps();
+		this.fetchChundren();
+		this.fetchEngagements();
+		this.fetchFamily();
+		this.fetchPotraits();
+		setTimeout(() => {
+			this.pickImage();
+		}, 1000);
 	}
 
 	handleCreateBlog = () => {
@@ -87,10 +102,51 @@ class CreateBlog extends Component {
 	};
 
 	showBlogDetails = (slug) => {
-		const { blogArray } = this.state;
+		const { blogArray, mapicha } = this.state;
+		let foundImages = [];
+		mapicha.map((moja) => {
+			if (moja.title === slug) {
+				foundImages.push(moja.image_path);
+				console.log('machi-machi', foundImages);
+				this.setState({
+					blogImages: foundImages
+				});
+			}
+		});
+
 		const selectedBlog = blogArray.find((blog) => blog.slug === slug);
 		this.setState({
 			specificBlog: selectedBlog
+		});
+	};
+
+	pickImage = () => {
+		const { bumpArray, childrenArray, engagementArray, familyArray, potraitArray } = this.state;
+		console.log('iko-mimba', bumpArray);
+		let allImages = [];
+		bumpArray.map((moja) => {
+			console.log('kamoja', moja.title);
+			allImages.push(moja);
+		});
+		childrenArray.map((moja) => {
+			console.log('kamoja', moja.title);
+			allImages.push(moja);
+		});
+		engagementArray.map((moja) => {
+			console.log('kamoja', moja.title);
+			allImages.push(moja);
+		});
+		familyArray.map((moja) => {
+			console.log('kamoja', moja.title);
+			allImages.push(moja);
+		});
+		potraitArray.map((moja) => {
+			console.log('kamoja', moja.title);
+			allImages.push(moja);
+		});
+		console.log('imageCollection', allImages);
+		this.setState({
+			mapicha: allImages
 		});
 	};
 
@@ -137,9 +193,123 @@ class CreateBlog extends Component {
 				console.log('err', err);
 			});
 	};
+	fetchBumps = () => {
+		this.setState({ isLoading: true });
+
+		// acces api
+		axios
+			.get('http://127.0.0.1:8000/photography/royalframesmedia/bump/')
+			.then((response) => {
+				console.log('mimba', response.data.results);
+				const blogs = response.data.results;
+				this.setState({
+					bumpArray: blogs,
+					isLoading: false
+				});
+				return response.json();
+			})
+			.catch((err) => {
+				console.log('err', err);
+			});
+	};
+	fetchChundren = () => {
+		this.setState({ isLoading: true });
+
+		// acces api
+		axios
+			.get('http://127.0.0.1:8000/photography/royalframesmedia/children')
+			.then((response) => {
+				console.log('chundren', response.data.results);
+				const blogs = response.data.results;
+				this.setState({
+					childrenArray: blogs,
+					isLoading: false
+				});
+				return response.json();
+			})
+			.catch((err) => {
+				console.log('err', err);
+			});
+	};
+	fetchEngagements = () => {
+		this.setState({ isLoading: true });
+
+		// acces api
+		axios
+			.get('http://127.0.0.1:8000/photography/royalframesmedia/engagements/')
+			.then((response) => {
+				console.log('response', response.data.results);
+				const blogs = response.data.results;
+				this.setState({
+					engagementArray: blogs,
+					isLoading: false
+				});
+				return response.json();
+			})
+			.catch((err) => {
+				console.log('err', err);
+			});
+	};
+	fetchFamily = () => {
+		this.setState({ isLoading: true });
+
+		// acces api
+		axios
+			.get('http://127.0.0.1:8000/photography/royalframesmedia/family')
+			.then((response) => {
+				console.log('response', response.data.results);
+				const blogs = response.data.results;
+				this.setState({
+					familyArray: blogs,
+					isLoading: false
+				});
+				return response.json();
+			})
+			.catch((err) => {
+				console.log('err', err);
+			});
+	};
+	fetchPotraits = () => {
+		this.setState({ isLoading: true });
+
+		// acces api
+		axios
+			.get('http://127.0.0.1:8000/photography/royalframesmedia/potraits/')
+			.then((response) => {
+				console.log('response', response.data.results);
+				const blogs = response.data.results;
+				this.setState({
+					potraitArray: blogs,
+					isLoading: false
+				});
+				return response.json();
+			})
+			.catch((err) => {
+				console.log('err', err);
+			});
+	};
 	render() {
-		const { creating, blogArray, isLoading, specificBlog } = this.state;
+		const {
+			creating,
+			blogArray,
+			bumpArray,
+			childrenArray,
+			engagementArray,
+			familyArray,
+			potraitArray,
+			// mapicha,
+			blogImages,
+			isLoading,
+			specificBlog
+		} = this.state;
 		const userToken = localStorage.getItem('token');
+		console.log('specificBlog', specificBlog);
+
+		const picha = blogImages.map((moja) => {
+			console.log('kapicha-kamue', moja);
+			return <img key={moja.slug} className="img-fluid my-2" src={moja} />;
+			// allImages.push(moja);
+		});
 		return (
 			<React.Fragment>
 				{(creating || specificBlog) && <Backdrop />}
@@ -179,7 +349,7 @@ class CreateBlog extends Component {
 									name="body"
 									onChange={this.onChange}
 									value={this.state.body}
-									maxLength = "500"
+									maxLength="500"
 								/>
 							</div>
 							<div className="form-ctrl">
@@ -202,12 +372,17 @@ class CreateBlog extends Component {
 						confirmText="Delete"
 					>
 						<div className="container ">
+							<div className="row">
 								<div className="col-md-12">
 									<p>{specificBlog.body}</p>
 								</div>
 								<div className="col-md-12">
 									<img className="img-fluid" src={specificBlog.image_path} />
 								</div>
+							</div>
+							<div className="row">
+								<div className="col-md-12 my-2">{picha}</div>
+							</div>
 						</div>
 					</MyModal>
 				)}

@@ -5,7 +5,6 @@ import '../../assets/styles/blog.css';
 import MyModal from '../common/modal';
 import Backdrop from '../common/backdrop';
 import ChildrenList from './children/ChildrenList';
-import BumpList from './bumps/BumpList';
 import axios from 'axios';
 // import uploadChildrenAction from '../actions/uploadBump';
 import uploadChildrenAction from '../actions/uploadChildren';
