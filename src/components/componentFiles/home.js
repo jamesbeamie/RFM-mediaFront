@@ -14,13 +14,25 @@ const HomePage = () => {
 				<div className="wrapper">
 					<Carousel>
 						<Carousel.Item>
+							<img src="src/assets/images/RFM_NP_NC_2.jpg" className="carousel_image" alt="..." />
+						</Carousel.Item>
+						<Carousel.Item>
+							<img src="src/assets/images/RFP_D_3b.jpg" className="carousel_image" alt="..." />
+						</Carousel.Item>
+						<Carousel.Item>
+							<img src="src/assets/images/RFP_PK_4.jpg" className="carousel_image" alt="..." />
+						</Carousel.Item>
+						<Carousel.Item>
 							<img src="src/assets/images/IMG_2299-1083.jpg" className="carousel_image" alt="..." />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img src="src/assets/images/Jay_8.jpg" className="carousel_image" alt="..." />
+							<img src="src/assets/images/RFM_MU_4.jpg" className="carousel_image" alt="..." />
 						</Carousel.Item>
 						<Carousel.Item>
-							<img src="src/assets/images/RFM_LIZ_9.jpg" className="carousel_image" alt="..." />
+							<img src="src/assets/images/RFM_SG_22.jpg" className="carousel_image" alt="..." />
+						</Carousel.Item>
+						<Carousel.Item>
+							<img src="src/assets/images/RFM_SJ (28).jpg" className="carousel_image" alt="..." />
 						</Carousel.Item>
 					</Carousel>
 				</div>
