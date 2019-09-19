@@ -16,7 +16,7 @@ class CreatePotrait extends Component {
 		super(props);
 		this.state = {
 			creating: false,
-			engagementArray: [],
+			potraitArray: [],
 			isLoading: false,
 			specificBlog: null,
 			image: ''
@@ -33,7 +33,7 @@ class CreatePotrait extends Component {
 	};
 
 	componentDidMount() {
-		this.fetchEngagements();
+		this.fetchPotraits();
 	}
 
 	handleCreatePotrait = () => {
@@ -84,7 +84,7 @@ class CreatePotrait extends Component {
 
 	showBlogDetails = (blogId) => {
 		this.setState((prevState) => {
-			const selectedBlog = prevState.engagementArray.find((blog) => blog._id === blogId);
+			const selectedBlog = prevState.potraitArray.find((blog) => blog._id === blogId);
 			return { specificBlog: selectedBlog };
 		});
 	};
@@ -98,7 +98,7 @@ class CreatePotrait extends Component {
 		this.props.uploadPotraitAction(engagementData);
 	};
 
-	fetchEngagements = () => {
+	fetchPotraits = () => {
 		this.setState({ isLoading: true });
 
 		// acces api
@@ -108,7 +108,7 @@ class CreatePotrait extends Component {
 				console.log('response', response.data.results);
 				const blogs = response.data.results;
 				this.setState({
-					engagementArray: blogs,
+					potraitArray: blogs,
 					isLoading: false
 				});
 				return response.json();
@@ -118,7 +118,7 @@ class CreatePotrait extends Component {
 			});
 	};
 	render() {
-		const { creating, engagementArray, isLoading, specificBlog } = this.state;
+		const { creating, potraitArray, isLoading, specificBlog } = this.state;
 		const userToken = localStorage.getItem('token');
 		return (
 			<React.Fragment>
@@ -180,7 +180,7 @@ class CreatePotrait extends Component {
 					{isLoading ? (
 						<Spinner />
 					) : (
-						<PotraitList potraits={engagementArray} blogDetails={this.showBlogDetails} />
+						<PotraitList potraits={potraitArray} blogDetails={this.showBlogDetails} />
 					)}
 				</div>
 			</React.Fragment>

@@ -4,9 +4,7 @@ import BlogItem from './BlogItem';
 import '../../../assets/styles/blogList.css';
 
 const BlogList = (props) => {
-	// can also use () then call this.props
 	const fetchedBlogs = props.blogs.map((blog) => {
-		console.log('blogths', props);
 		return (
 			<BlogItem
 				key={blog.id}
