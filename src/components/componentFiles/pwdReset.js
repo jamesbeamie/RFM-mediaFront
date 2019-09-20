@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import '../../assets/styles/auth.css';
 import axios from 'axios';
-// import loginContext from '../common/loginContext';
 class PwdReset extends Component {
-	// static contextType = loginContext;
 
 	constructor(props) {
 		super(props);
 
-		// create refs to link input fields
 		this.emailEl = React.createRef();
 		this.passwordEl = React.createRef();
 		this.confirmpasswordEl = React.createRef();

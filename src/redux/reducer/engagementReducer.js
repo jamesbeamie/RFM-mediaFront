@@ -1,5 +1,4 @@
 import { UPLOAD_ENGAGEMENT_SUCCESS, UPLOAD_ENGAGEMENT_FAILED } from '../../components/actions/types';
-// import { act } from 'react-testing-library';
 
 const engagementState = {
 	newEngagement: {}

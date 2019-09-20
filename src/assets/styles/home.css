@@ -3,7 +3,6 @@
 	width: 100%;
 	height: 95vh;
 	object-fit: cover;
-	/* background-size: cover; */
 }
 .wrapper {
 	width: 100%;
@@ -18,7 +17,6 @@
 }
 .picha {
 	width: 95%;
-	/* height: 15rem; */
 	object-fit: cover;
 }
 .futa {
@@ -43,7 +41,6 @@
 }
 .bgkala {
 	background-color: #af7ac5;
-	/* opacity: .7; */
 	color: white;
 }
 .soc-media {

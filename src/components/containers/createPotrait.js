@@ -4,7 +4,6 @@ import '../../assets/styles/blogModal.css';
 import '../../assets/styles/blog.css';
 import MyModal from '../common/modal';
 import Backdrop from '../common/backdrop';
-// import BlogList from './blogs/BlogList';
 import PotraitList from './potraits/PotraitList';
 import axios from 'axios';
 import uploadPotraitAction from '../actions/uploadPotrait';
@@ -19,7 +18,8 @@ class CreatePotrait extends Component {
 			potraitArray: [],
 			isLoading: false,
 			specificBlog: null,
-			image: ''
+			image: '',
+			progress: 0
 		};
 
 		this.handleUpload = this.handleUpload.bind(this);
@@ -60,6 +60,10 @@ class CreatePotrait extends Component {
 			'state_changed',
 			(snapshot) => {
 				// shows progress %
+				const progressBar = Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100);
+				this.setState({
+					progress: progressBar
+				});
 			},
 			(error) => {
 				console.log(error);
@@ -118,14 +122,14 @@ class CreatePotrait extends Component {
 			});
 	};
 	render() {
-		const { creating, potraitArray, isLoading, specificBlog } = this.state;
+		const { creating, potraitArray, isLoading, specificBlog, progress } = this.state;
 		const userToken = localStorage.getItem('token');
 		return (
 			<React.Fragment>
 				{(creating || specificBlog) && <Backdrop />}
 				{creating && (
 					<MyModal
-						title="Bumps"
+						title="Potrait"
 						canCancel
 						canConfirm
 						onCancel={this.handleCancel}
@@ -133,6 +137,7 @@ class CreatePotrait extends Component {
 						confirmText="Upload"
 					>
 						<form>
+							<progress value={progress} max="100" />
 							<div className="form-ctrl">
 								<label htmlFor="title">Title</label>
 								<input
@@ -169,7 +174,7 @@ class CreatePotrait extends Component {
 				)}
 				{userToken && (
 					<div className="hom-ctrl">
-						<h4>Upload Engagement</h4>
+						<h4>Upload Potrait</h4>
 						<button className="btn" onClick={this.handleCreatePotrait}>
 							{' '}
 							Click to Upload
@@ -187,8 +192,6 @@ class CreatePotrait extends Component {
 		);
 	}
 }
-
-// export default CreatePotrait;
 
 const mapStateToProps = (state) => ({
 	newPotrait: state.potraitReducer.newPotrait

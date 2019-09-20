@@ -1,5 +1,4 @@
 import { UPLOAD_CHILDREN_SUCCESS, UPLOAD_CHILDREN_FAILED } from '../../components/actions/types';
-// import { act } from 'react-testing-library';
 
 const bumpState = {
 	newChild: {}

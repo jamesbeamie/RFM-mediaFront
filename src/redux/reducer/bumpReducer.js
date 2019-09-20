@@ -1,5 +1,4 @@
 import { UPLOAD_BUMP_SUCCESS, UPLOAD_BUMP_FAILED } from '../../components/actions/types';
-// import { act } from 'react-testing-library';
 
 const bumpState = {
 	newBump: {}

@@ -6,7 +6,6 @@ import MyModal from '../common/modal';
 import Backdrop from '../common/backdrop';
 import ChildrenList from './children/ChildrenList';
 import axios from 'axios';
-// import uploadChildrenAction from '../actions/uploadBump';
 import uploadChildrenAction from '../actions/uploadChildren';
 import { storage } from '../../firebase';
 import Spinner from '../common/Spinner';
@@ -19,7 +18,8 @@ class CreateChild extends Component {
 			childrenArray: [],
 			isLoading: false,
 			specificBlog: null,
-			image: ''
+			image: '',
+			progress: 0
 		};
 
 		this.handleUpload = this.handleUpload.bind(this);
@@ -60,6 +60,10 @@ class CreateChild extends Component {
 			'state_changed',
 			(snapshot) => {
 				// shows progress %
+				const progressBar = Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100);
+				this.setState({
+					progress: progressBar
+				});
 			},
 			(error) => {
 				console.log(error);
@@ -118,14 +122,14 @@ class CreateChild extends Component {
 			});
 	};
 	render() {
-		const { creating, childrenArray, isLoading, specificBlog } = this.state;
+		const { creating, childrenArray, isLoading, specificBlog, progress } = this.state;
 		const userToken = localStorage.getItem('token');
 		return (
 			<React.Fragment>
 				{(creating || specificBlog) && <Backdrop />}
 				{creating && (
 					<MyModal
-						title="Bumps"
+						title="Litle ones"
 						canCancel
 						canConfirm
 						onCancel={this.handleCancel}
@@ -133,6 +137,7 @@ class CreateChild extends Component {
 						confirmText="Upload"
 					>
 						<form>
+						<progress value={progress} max="100" />
 							<div className="form-ctrl">
 								<label htmlFor="title">Title</label>
 								<input
@@ -177,14 +182,16 @@ class CreateChild extends Component {
 					</div>
 				)}
 				<div className="">
-					{isLoading ? <Spinner /> : <ChildrenList childrens={childrenArray} blogDetails={this.showBlogDetails} />}
+					{isLoading ? (
+						<Spinner />
+					) : (
+						<ChildrenList childrens={childrenArray} blogDetails={this.showBlogDetails} />
+					)}
 				</div>
 			</React.Fragment>
 		);
 	}
 }
-
-// export default CreateChild;
 
 const mapStateToProps = (state) => ({
 	newChild: state.childrenReducer.newChild

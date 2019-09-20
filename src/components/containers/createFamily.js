@@ -4,10 +4,8 @@ import '../../assets/styles/blogModal.css';
 import '../../assets/styles/blog.css';
 import MyModal from '../common/modal';
 import Backdrop from '../common/backdrop';
-// import BlogList from './blogs/BlogList';
 import FamilyList from './family/FamilyList';
 import axios from 'axios';
-// import uploadFamilyAction from '../actions/CreateBump';
 import uploadFamilyAction from '../actions/uploadFamily';
 import { storage } from '../../firebase';
 import Spinner from '../common/Spinner';
@@ -20,7 +18,8 @@ class CreateBump extends Component {
 			bumpArray: [],
 			isLoading: false,
 			specificBlog: null,
-			image: ''
+			image: '',
+			progress: 0
 		};
 
 		this.handleUpload = this.handleUpload.bind(this);
@@ -61,6 +60,10 @@ class CreateBump extends Component {
 			'state_changed',
 			(snapshot) => {
 				// shows progress %
+				const progressBar = Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100);
+				this.setState({
+					progress: progressBar
+				});
 			},
 			(error) => {
 				console.log(error);
@@ -119,14 +122,14 @@ class CreateBump extends Component {
 			});
 	};
 	render() {
-		const { creating, bumpArray, isLoading, specificBlog } = this.state;
+		const { creating, bumpArray, isLoading, specificBlog, progress } = this.state;
 		const userToken = localStorage.getItem('token');
 		return (
 			<React.Fragment>
 				{(creating || specificBlog) && <Backdrop />}
 				{creating && (
 					<MyModal
-						title="Bumps"
+						title="Family"
 						canCancel
 						canConfirm
 						onCancel={this.handleCancel}
@@ -134,6 +137,7 @@ class CreateBump extends Component {
 						confirmText="Upload"
 					>
 						<form>
+							<progress value={progress} max="100" />
 							<div className="form-ctrl">
 								<label htmlFor="title">Title</label>
 								<input
@@ -170,7 +174,7 @@ class CreateBump extends Component {
 				)}
 				{userToken && (
 					<div className="hom-ctrl">
-						<h4>Upload Bump</h4>
+						<h4>Upload Family</h4>
 						<button className="btn" onClick={this.handleCreateBump}>
 							{' '}
 							Click to Upload
@@ -185,7 +189,6 @@ class CreateBump extends Component {
 	}
 }
 
-// export default CreateBump;
 
 const mapStateToProps = (state) => ({
 	newFamily: state.familyReducer.newFamily

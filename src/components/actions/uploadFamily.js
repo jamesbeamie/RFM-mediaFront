@@ -14,7 +14,6 @@ const uploadFamilyAction = (familyData) => (dispatch) => {
 				title: familyData.title
 			}
 		})
-		// .then((res) => res.json())
 		.then((blogdata) =>
 			dispatch({
 				type: UPLOAD_FAMILY_SUCCESS,

@@ -17,7 +17,6 @@ const signUpAction = (signUpData) => (dispatch) => {
 				}
 			}
 		})
-		// .then((res) => res.json())
 		.then((userdata) =>
 			dispatch({
 				type: SIGNUP_SUCSESS,

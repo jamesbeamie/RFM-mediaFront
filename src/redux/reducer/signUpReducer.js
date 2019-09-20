@@ -1,5 +1,4 @@
 import { SIGNUP_SUCSESS, SIGNUP_FAILED } from '../../components/actions/types';
-// import { act } from 'react-testing-library';
 
 const signUpState = {
 	newUser: {}

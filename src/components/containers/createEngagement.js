@@ -4,7 +4,6 @@ import '../../assets/styles/blogModal.css';
 import '../../assets/styles/blog.css';
 import MyModal from '../common/modal';
 import Backdrop from '../common/backdrop';
-// import BlogList from './blogs/BlogList';
 import EngagementList from './engagements/EngagementList';
 import axios from 'axios';
 import uploadEngagementAction from '../actions/uploadEngagement';
@@ -19,7 +18,8 @@ class CreateEngagement extends Component {
 			engagementArray: [],
 			isLoading: false,
 			specificBlog: null,
-			image: ''
+			image: '',
+			progress: 0
 		};
 
 		this.handleUpload = this.handleUpload.bind(this);
@@ -60,6 +60,10 @@ class CreateEngagement extends Component {
 			'state_changed',
 			(snapshot) => {
 				// shows progress %
+				const progressBar = Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100);
+				this.setState({
+					progress: progressBar
+				});
 			},
 			(error) => {
 				console.log(error);
@@ -118,14 +122,14 @@ class CreateEngagement extends Component {
 			});
 	};
 	render() {
-		const { creating, engagementArray, isLoading, specificBlog } = this.state;
+		const { creating, engagementArray, isLoading, specificBlog, progress } = this.state;
 		const userToken = localStorage.getItem('token');
 		return (
 			<React.Fragment>
 				{(creating || specificBlog) && <Backdrop />}
 				{creating && (
 					<MyModal
-						title="Bumps"
+						title="Engagements"
 						canCancel
 						canConfirm
 						onCancel={this.handleCancel}
@@ -133,6 +137,7 @@ class CreateEngagement extends Component {
 						confirmText="Upload"
 					>
 						<form>
+							<progress value={progress} max="100" />
 							<div className="form-ctrl">
 								<label htmlFor="title">Title</label>
 								<input
@@ -188,7 +193,6 @@ class CreateEngagement extends Component {
 	}
 }
 
-// export default CreateEngagement;
 
 const mapStateToProps = (state) => ({
 	newEngagement: state.engagementReducer.newEngagement

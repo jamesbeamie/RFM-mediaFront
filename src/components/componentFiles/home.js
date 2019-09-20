@@ -2,10 +2,9 @@ import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhone, faComment, faAddressBook, } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faAddressBook } from '@fortawesome/free-solid-svg-icons';
 import { SocialIcon } from 'react-social-icons';
 import '../../assets/styles/home.css';
-// import { Link } from 'react-router-dom';
 
 const HomePage = () => {
 	return (
