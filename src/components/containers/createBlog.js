@@ -24,6 +24,7 @@ class CreateBlog extends Component {
 			isLoading: false,
 			specificBlog: null,
 			title: '',
+			tag: '',
 			description: '',
 			body: '',
 			image: null,
@@ -152,8 +153,8 @@ class CreateBlog extends Component {
 
 	handleConfirm = () => {
 		event.preventDefault();
-		const { title, description, body, image } = this.state;
-		const blogData = { title, description, body, image };
+		const { title, tag, description, body, image } = this.state;
+		const blogData = { title, tag, description, body, image };
 		console.log('blogData', this.state);
 
 		this.props.createBlogAction(blogData);
@@ -331,6 +332,16 @@ class CreateBlog extends Component {
 									name="title"
 									onChange={this.onChange}
 									value={this.state.title}
+								/>
+							</div>
+							<div className="form-ctrl">
+								<label htmlFor="tag">tag</label>
+								<input
+									placeholder="tag here"
+									type="text"
+									name="tag"
+									onChange={this.onChange}
+									value={this.state.tag}
 								/>
 							</div>
 							<div className="form-ctrl">

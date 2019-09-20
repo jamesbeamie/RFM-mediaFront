@@ -12,6 +12,7 @@ const createBlogAction = (blogData) => (dispatch) => {
 			data: {
 				image_path: blogData.image,
 				title: blogData.title,
+				tag: blogData.tag,
 				description: blogData.description,
 				body: blogData.body
 			}
