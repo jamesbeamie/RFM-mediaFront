@@ -384,8 +384,16 @@ class CreateBlog extends Component {
 					>
 						<div className="container ">
 							<div className="row">
-								<div className="col-md-12">
-									<p>{specificBlog.body}</p>
+								<div className="col-md-12 text-center fonti">
+									<p className="text-center">{specificBlog.description}</p>
+									<p className="text-center">{specificBlog.body}</p>
+
+									<p className="deti">
+										Created: {new Date(specificBlog.created_at).toLocaleDateString()}
+									</p>
+									<p className="deti">
+										updated: {new Date(specificBlog.updated_at).toLocaleDateString()}
+									</p>
 								</div>
 								<div className="col-md-12">
 									<img className="img-fluid" src={specificBlog.image_path} />

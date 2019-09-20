@@ -2,7 +2,7 @@ import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBaby, faCamera, faHeart, faRing, faChild, faPhone, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faComment, faAddressBook, } from '@fortawesome/free-solid-svg-icons';
 import { SocialIcon } from 'react-social-icons';
 import '../../assets/styles/home.css';
 // import { Link } from 'react-router-dom';
@@ -45,10 +45,10 @@ const HomePage = () => {
 					</div>
 					<div className="col-sm-4 text-center paded">
 						<p className="fonti">
-							<FontAwesomeIcon icon={faPhone} /> 0700000000
+							<FontAwesomeIcon icon={faPhone} /> 0725298331
 						</p>
 						<p className="fonti">
-							<FontAwesomeIcon icon={faComment} /> 0700000000
+							<FontAwesomeIcon icon={faAddressBook} /> royalframesmedia@gmail.com
 						</p>
 					</div>
 					<div className="col-sm-4 paded">

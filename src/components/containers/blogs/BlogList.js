@@ -21,7 +21,7 @@ const BlogList = (props) => {
 			/>
 		);
 	});
-	return <div className="container">{fetchedBlogs}</div>;
+	return <div className="row">{fetchedBlogs}</div>;
 };
 
 export default BlogList;
