@@ -304,9 +304,9 @@ class CreateBump extends Component {
 					>
 						<form>
 							<div className="form-ctrl">
-								<label htmlFor="title">Title</label>
+								<label htmlFor="title">Blog tag</label>
 								<input
-									placeholder="Title here"
+									placeholder="Enter blog tag"
 									type="text"
 									name="title"
 									onChange={this.onChange}
