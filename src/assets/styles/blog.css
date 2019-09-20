@@ -6,3 +6,8 @@
 	width: 30rem;
 	max-width: 80%;
 }
+.fonti p {
+	font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+	font-weight: 100;
+	font-size: 14px;
+}
