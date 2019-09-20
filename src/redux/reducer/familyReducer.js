@@ -1,5 +1,4 @@
 import { UPLOAD_FAMILY_SUCCESS, UPLOAD_FAMILY_FAILED } from '../../components/actions/types';
-// import { act } from 'react-testing-library';
 
 const familyState = {
 	newFamily: {}

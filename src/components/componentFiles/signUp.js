@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import '../../assets/styles/auth.css';
-// import axios from 'axios';
 import signUpAction from '../actions/singUp';
 class AuthPage extends Component {
 	constructor(props) {

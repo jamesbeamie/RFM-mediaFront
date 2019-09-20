@@ -1,5 +1,4 @@
 import { UPLOAD_POTRAIT_SUCCESS, UPLOAD_POTRAIT_FAILED } from '../../components/actions/types';
-// import { act } from 'react-testing-library';
 
 const bumpState = {
 	newPotrait: {}

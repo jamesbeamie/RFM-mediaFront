@@ -30,7 +30,8 @@ class CreateBlog extends Component {
 			image: null,
 			url: '',
 			mapicha: [],
-			blogImages: []
+			blogImages: [],
+			progress: 0
 		};
 
 		this.handleUpload = this.handleUpload.bind(this);
@@ -79,6 +80,10 @@ class CreateBlog extends Component {
 			'state_changed',
 			(snapshot) => {
 				// shows progress %
+				const progressBar = Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100);
+				this.setState({
+					progress: progressBar
+				});
 			},
 			(error) => {
 				console.log(error);
@@ -293,12 +298,7 @@ class CreateBlog extends Component {
 		const {
 			creating,
 			blogArray,
-			bumpArray,
-			childrenArray,
-			engagementArray,
-			familyArray,
-			potraitArray,
-			// mapicha,
+			progress,
 			blogImages,
 			isLoading,
 			specificBlog
@@ -324,6 +324,7 @@ class CreateBlog extends Component {
 						confirmText="Post"
 					>
 						<form>
+							<progress value={progress} max="100" />
 							<div className="form-ctrl">
 								<label htmlFor="title">Title</label>
 								<input
@@ -422,7 +423,6 @@ class CreateBlog extends Component {
 	}
 }
 
-// export default CreateBlog;
 
 const mapStateToProps = (state) => ({
 	newBlog: state.blogReducer.newBlog,

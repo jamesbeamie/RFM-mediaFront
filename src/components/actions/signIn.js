@@ -12,13 +12,11 @@ const signInAction = (signInData) => (dispatch) => {
 				url: '/users/login/',
 				data: {
 					user: {
-						// username: signUpData.username,
 						email: signInData.email,
 						password: signInData.password
 					}
 				}
 			})
-			// .then((res) => res.json())
 			.then((logindata) =>
 				dispatch({
 					type: SIGNIN_SUCCESS,

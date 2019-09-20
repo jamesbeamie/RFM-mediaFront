@@ -1,5 +1,4 @@
 import { CREATE_BLOGS_SUCCESS, CREATE_BLOGS_FAILED } from '../../components/actions/types';
-// import { act } from 'react-testing-library';
 
 const blogState = {
 	blogs: [],

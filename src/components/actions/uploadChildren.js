@@ -14,7 +14,6 @@ const uploadChildrenAction = (childData) => (dispatch) => {
 				title: childData.title
 			}
 		})
-		// .then((res) => res.json())
 		.then((blogdata) =>
 			dispatch({
 				type: UPLOAD_CHILDREN_SUCCESS,
