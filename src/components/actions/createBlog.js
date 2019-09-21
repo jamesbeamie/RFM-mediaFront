@@ -12,7 +12,7 @@ const createBlogAction = (blogData) => (dispatch) => {
 			data: {
 				image_path: blogData.image,
 				title: blogData.title,
-				tag: blogData.tag,
+				tag: blogData.tag.toLowerCase(),
 				description: blogData.description,
 				body: blogData.body
 			}

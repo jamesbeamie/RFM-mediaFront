@@ -100,6 +100,9 @@ class CreatePotrait extends Component {
 		console.log('mimbaData', this.state);
 
 		this.props.uploadPotraitAction(engagementData);
+		this.setState({
+			creating: false
+		});
 	};
 
 	fetchPotraits = () => {
@@ -139,9 +142,9 @@ class CreatePotrait extends Component {
 						<form>
 							<progress value={progress} max="100" />
 							<div className="form-ctrl">
-								<label htmlFor="title">Title</label>
+								<label htmlFor="title">Blog tag</label>
 								<input
-									placeholder="Title here"
+									placeholder="Enter blog tag"
 									type="text"
 									name="title"
 									onChange={this.onChange}

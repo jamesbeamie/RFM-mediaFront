@@ -100,6 +100,9 @@ class CreateBump extends Component {
 		console.log('mimbaData', this.state);
 
 		this.props.uploadFamilyAction(bumpData);
+		this.setState({
+			creating: false
+		});
 	};
 
 	fetchFamily = () => {
@@ -139,9 +142,9 @@ class CreateBump extends Component {
 						<form>
 							<progress value={progress} max="100" />
 							<div className="form-ctrl">
-								<label htmlFor="title">Title</label>
+								<label htmlFor="title">Blog tag</label>
 								<input
-									placeholder="Title here"
+									placeholder="Enter blog tag"
 									type="text"
 									name="title"
 									onChange={this.onChange}
@@ -188,7 +191,6 @@ class CreateBump extends Component {
 		);
 	}
 }
-
 
 const mapStateToProps = (state) => ({
 	newFamily: state.familyReducer.newFamily

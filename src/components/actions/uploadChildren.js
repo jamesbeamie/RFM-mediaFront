@@ -11,7 +11,7 @@ const uploadChildrenAction = (childData) => (dispatch) => {
 			url: '/children/',
 			data: {
 				image_path: childData.image,
-				title: childData.title
+				title: childData.title.toLowerCase()
 			}
 		})
 		.then((blogdata) =>

@@ -102,6 +102,9 @@ class CreateBump extends Component {
 		console.log('mimbaData', this.state);
 
 		this.props.uploadBumpAction(bumpData);
+		this.setState({
+			creating: false
+		});
 	};
 
 	fetchBumps = () => {

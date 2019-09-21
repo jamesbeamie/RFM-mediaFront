@@ -11,7 +11,7 @@ const uploadBumpAction = (bumpData) => (dispatch) => {
 			url: '/bump/',
 			data: {
 				image_path: bumpData.image,
-				title: bumpData.title,
+				title: bumpData.title.toLowerCase(),
 			}
 		})
 		.then((blogdata) =>

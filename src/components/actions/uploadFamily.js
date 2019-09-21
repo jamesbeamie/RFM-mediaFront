@@ -11,7 +11,7 @@ const uploadFamilyAction = (familyData) => (dispatch) => {
 			url: '/family/',
 			data: {
 				image_path: familyData.image,
-				title: familyData.title
+				title: familyData.title.toLowerCase()
 			}
 		})
 		.then((blogdata) =>

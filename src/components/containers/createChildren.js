@@ -100,6 +100,9 @@ class CreateChild extends Component {
 		console.log('mimbaData', this.state);
 
 		this.props.uploadChildrenAction(childData);
+		this.setState({
+			creating: false
+		});
 	};
 
 	fetchBumps = () => {
@@ -139,9 +142,9 @@ class CreateChild extends Component {
 						<form>
 						<progress value={progress} max="100" />
 							<div className="form-ctrl">
-								<label htmlFor="title">Title</label>
+								<label htmlFor="title">Blog tag</label>
 								<input
-									placeholder="Title here"
+								placeholder="Enter blog tag"
 									type="text"
 									name="title"
 									onChange={this.onChange}

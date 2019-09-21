@@ -7,7 +7,7 @@ const BlogItem = (props) => (
 		<button className="" onClick={props.specificBlog.bind(this, props.slug)}>
 			<img className="img-fluid" src={props.image_path} />
 		</button>
-		<p>tag:{props.tag}</p>
+		<p className="tagi">tag:{props.tag}</p>
 	</div>
 );
 
