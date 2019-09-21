@@ -16,7 +16,7 @@
 }
 .MyModal_content {
 	padding: 1rem;
-	background: rgb(255, 254, 255)
+	background: rgb(255, 254, 255);
 }
 .MyModal_actions {
 	display: flex;
@@ -27,4 +27,8 @@
 		width: 60rem;
 		left: calc((100% - 60rem) / 2);
 	}
+}
+.tagi {
+	color: rgb(134, 129, 129);
+	font-size: 10px;
 }

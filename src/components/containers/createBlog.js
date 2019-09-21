@@ -370,6 +370,7 @@ class CreateBlog extends Component {
 				{specificBlog && (
 					<MyModal
 						title={specificBlog.title}
+						tag={specificBlog.tag}
 						canCancel
 						canConfirm
 						onCancel={this.handleCancel}

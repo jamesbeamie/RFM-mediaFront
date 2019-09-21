@@ -11,7 +11,7 @@ const uploadEngagementAction = (engagementData) => (dispatch) => {
 			url: '/engagements/',
 			data: {
 				image_path: engagementData.image,
-				title: engagementData.title
+				title: engagementData.title.toLowerCase()
 			}
 		})
 		.then((engagementdata) =>

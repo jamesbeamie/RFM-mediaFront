@@ -100,6 +100,9 @@ class CreateEngagement extends Component {
 		console.log('mimbaData', this.state);
 
 		this.props.uploadEngagementAction(engagementData);
+		this.setState({
+			creating: false
+		});
 	};
 
 	fetchEngagements = () => {
@@ -139,9 +142,9 @@ class CreateEngagement extends Component {
 						<form>
 							<progress value={progress} max="100" />
 							<div className="form-ctrl">
-								<label htmlFor="title">Title</label>
+								<label htmlFor="title">Blog tag</label>
 								<input
-									placeholder="Title here"
+									placeholder="Enter blog tag"
 									type="text"
 									name="title"
 									onChange={this.onChange}
@@ -192,7 +195,6 @@ class CreateEngagement extends Component {
 		);
 	}
 }
-
 
 const mapStateToProps = (state) => ({
 	newEngagement: state.engagementReducer.newEngagement
