@@ -107,7 +107,7 @@ class CreatePotrait extends Component {
 
 		// acces api
 		axios
-			.get('http://127.0.0.1:8000/photography/royalframesmedia/potraits/')
+			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/potraits/')
 			.then((response) => {
 				console.log('response', response.data.results);
 				const blogs = response.data.results;

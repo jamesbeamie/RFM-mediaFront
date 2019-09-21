@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const token = localStorage.getItem('token');
 const urlPath = axios.create({
-	baseURL: `http://127.0.0.1:8000/photography/royalframesmedia/`,
+	baseURL: `https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/`,
 	headers: {
 		'Content-Type': 'application/json',
 		Authorization: `${token}`

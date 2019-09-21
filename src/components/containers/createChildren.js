@@ -107,7 +107,7 @@ class CreateChild extends Component {
 
 		// acces api
 		axios
-			.get('http://127.0.0.1:8000/photography/royalframesmedia/children')
+			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/children')
 			.then((response) => {
 				console.log('response', response.data.results);
 				const blogs = response.data.results;
