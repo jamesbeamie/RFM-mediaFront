@@ -2,7 +2,8 @@
 	"name": "ps-redux",
 	"description": "Royalframes wedding and fashion photography",
 	"scripts": {
-		"start": "webpack-dev-server --config webpack.config.dev.js --port 3000"
+		"start": "webpack-dev-server --config webpack.config.dev.js --port 3000",
+		"build": "webpack --mode production"
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^1.2.22",
@@ -63,9 +64,7 @@
 		"node": ">=8"
 	},
 	"babel": {
-		"presets": [
-			"babel-preset-react-app"
-		]
+		"presets": [ "babel-preset-react-app" ]
 	},
 	"eslintConfig": {
 		"extends": [
