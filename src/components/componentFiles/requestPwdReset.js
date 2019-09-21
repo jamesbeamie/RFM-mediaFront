@@ -22,7 +22,7 @@ class ResetRequest extends Component {
 		};
 		// acces api
 		axios
-			.post('http://127.0.0.1:8000/photography/royalframesmedia/users/password_request/', requestBody)
+			.post('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/users/password_request/', requestBody)
 			.then((response) => {
 				console.log('response', response);
 			})

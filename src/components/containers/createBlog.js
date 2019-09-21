@@ -171,7 +171,7 @@ class CreateBlog extends Component {
 	handleDelete = (slug) => {
 		// event.preventDefault();
 		// axios
-		// 	.delete(`http://127.0.0.1:8000/photography/royalframesmedia/blog/${slug}`)
+		// 	.delete(`https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/blog/${slug}`)
 		// 	.then(() => {
 		// 		this.fetchBlogs();
 		// 	})
@@ -185,7 +185,7 @@ class CreateBlog extends Component {
 
 		// acces api
 		axios
-			.get('http://127.0.0.1:8000/photography/royalframesmedia/blog/')
+			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/blog/')
 			.then((response) => {
 				console.log('response', response.data.results);
 				const blogs = response.data.results;
@@ -204,7 +204,7 @@ class CreateBlog extends Component {
 
 		// acces api
 		axios
-			.get('http://127.0.0.1:8000/photography/royalframesmedia/bump/')
+			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/bump/')
 			.then((response) => {
 				console.log('mimba', response.data.results);
 				const blogs = response.data.results;
@@ -223,7 +223,7 @@ class CreateBlog extends Component {
 
 		// acces api
 		axios
-			.get('http://127.0.0.1:8000/photography/royalframesmedia/children')
+			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/children')
 			.then((response) => {
 				console.log('chundren', response.data.results);
 				const blogs = response.data.results;
@@ -242,7 +242,7 @@ class CreateBlog extends Component {
 
 		// acces api
 		axios
-			.get('http://127.0.0.1:8000/photography/royalframesmedia/engagements/')
+			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/engagements/')
 			.then((response) => {
 				console.log('response', response.data.results);
 				const blogs = response.data.results;
@@ -261,7 +261,7 @@ class CreateBlog extends Component {
 
 		// acces api
 		axios
-			.get('http://127.0.0.1:8000/photography/royalframesmedia/family')
+			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/family')
 			.then((response) => {
 				console.log('response', response.data.results);
 				const blogs = response.data.results;
@@ -280,7 +280,7 @@ class CreateBlog extends Component {
 
 		// acces api
 		axios
-			.get('http://127.0.0.1:8000/photography/royalframesmedia/potraits/')
+			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/potraits/')
 			.then((response) => {
 				console.log('response', response.data.results);
 				const blogs = response.data.results;
@@ -295,14 +295,7 @@ class CreateBlog extends Component {
 			});
 	};
 	render() {
-		const {
-			creating,
-			blogArray,
-			progress,
-			blogImages,
-			isLoading,
-			specificBlog
-		} = this.state;
+		const { creating, blogArray, progress, blogImages, isLoading, specificBlog } = this.state;
 		const userToken = localStorage.getItem('token');
 		console.log('specificBlog', specificBlog);
 
@@ -422,7 +415,6 @@ class CreateBlog extends Component {
 		);
 	}
 }
-
 
 const mapStateToProps = (state) => ({
 	newBlog: state.blogReducer.newBlog,

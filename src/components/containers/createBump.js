@@ -109,7 +109,7 @@ class CreateBump extends Component {
 
 		// acces api
 		axios
-			.get('http://127.0.0.1:8000/photography/royalframesmedia/bump/')
+			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/bump/')
 			.then((response) => {
 				console.log('response', response.data.results);
 				const blogs = response.data.results;

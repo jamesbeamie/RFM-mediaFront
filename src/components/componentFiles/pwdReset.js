@@ -29,7 +29,7 @@ class PwdReset extends Component {
 
 		// acces api
 		axios
-			.patch('http://127.0.0.1:8000/photography/royalframesmedia/users/password_reset/', requestBody)
+			.patch('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/users/password_reset/', requestBody)
 			.then((response) => {
 				console.log('response', response);
 			})
