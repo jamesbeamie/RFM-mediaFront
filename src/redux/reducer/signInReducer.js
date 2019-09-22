@@ -7,7 +7,6 @@ const signUpState = {
 const signInReducer = (state = signUpState, action) => {
 	switch (action.type) {
 		case SIGNIN_SUCCESS:
-			console.log('actions-payload', action.payload.data.user.token);
 			// eslint-disable-next-line no-case-declarations
 			const token = action.payload.data.user.token;
 			localStorage.setItem('token', `${token}`);

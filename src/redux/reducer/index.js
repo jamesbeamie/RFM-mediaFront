@@ -8,8 +8,6 @@ import childrenReducer from './childrenReducer';
 import engagementReducer from './engagementReducer';
 import familyReducer from './familyReducer';
 import potraitReducer from './potraitReducer';
-import deleteBlogReducer from './deleteBlogReducer';
-import singleBlogReducer from './singleBlogReducer';
 
 const rootReducer = combineReducers({
 	signUpReducer,
@@ -19,9 +17,7 @@ const rootReducer = combineReducers({
 	childrenReducer,
 	engagementReducer,
 	familyReducer,
-	potraitReducer,
-	deleteBlogReducer,
-	singleBlogReducer
+	potraitReducer
 });
 
 export default rootReducer;

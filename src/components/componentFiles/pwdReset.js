@@ -18,7 +18,6 @@ class PwdReset extends Component {
 		const confirmpassword = this.confirmpasswordEl.current.value
 
 		if (email.trim().length === 0 || password.trim().length === 0 || confirmpassword !== password) {
-			console.log('pwderrrrorrrr', )
 			return;
 		}
 
@@ -31,10 +30,10 @@ class PwdReset extends Component {
 		axios
 			.patch('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/users/password_reset/', requestBody)
 			.then((response) => {
-				console.log('response', response);
+				return response;
 			})
 			.catch((err) => {
-				console.log('err', err);
+			throw err;
 			});
 	};
 

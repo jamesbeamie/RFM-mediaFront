@@ -45,7 +45,6 @@ class CreateBump extends Component {
 	handleImage = (e) => {
 		if (e.target.files[0]) {
 			const image = e.target.files[0];
-			console.log('chukuwa', e.target.files[0]);
 			this.setState({
 				image
 			});
@@ -66,12 +65,11 @@ class CreateBump extends Component {
 				});
 			},
 			(error) => {
-				console.log(error);
+				return error;
 			},
-			(complete) => {
+			() => {
 				// returns completion of upload
 				storage.ref('images').child(image.name).getDownloadURL().then((url) => {
-					console.log('imgurl', url);
 					this.setState({
 						image: url
 					});
@@ -97,8 +95,8 @@ class CreateBump extends Component {
 		event.preventDefault();
 		const { title, image } = this.state;
 		const bumpData = { title, image };
-		console.log('mimbaData', this.state);
 
+		// eslint-disable-next-line react/prop-types
 		this.props.uploadFamilyAction(bumpData);
 		this.setState({
 			creating: false
@@ -112,16 +110,14 @@ class CreateBump extends Component {
 		axios
 			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/family')
 			.then((response) => {
-				console.log('response', response.data.results);
 				const blogs = response.data.results;
 				this.setState({
 					bumpArray: blogs,
 					isLoading: false
 				});
-				return response.json();
 			})
 			.catch((err) => {
-				console.log('err', err);
+				return err;
 			});
 	};
 	render() {

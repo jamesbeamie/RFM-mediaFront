@@ -23,13 +23,12 @@ class LoginPage extends Component {
 		event.preventDefault();
 		const { email, password } = this.state;
 		const loginData = { email, password };
-		console.log('loginData', this.state);
 
+		// eslint-disable-next-line react/prop-types
 		this.props.signInAction(loginData);
 	};
 
 	render() {
-		console.log('ma-auth', this.props);
 		const userToken = localStorage.getItem('token');
 		return (
 			<React.Fragment>

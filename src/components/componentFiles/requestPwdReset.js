@@ -24,10 +24,10 @@ class ResetRequest extends Component {
 		axios
 			.post('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/users/password_request/', requestBody)
 			.then((response) => {
-				console.log('response', response);
+				return response;
 			})
 			.catch((err) => {
-				console.log('err', err);
+				throw err;
 			});
 	};
 
