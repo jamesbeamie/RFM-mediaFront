@@ -6,7 +6,6 @@ import '../../../assets/styles/blogList.css';
 const BumpList = (props) => {
 	// can also use () then call this.props
 	const fetchedBumps = props.bumps.map((blog) => {
-		console.log('blogths', props);
 		return <BumpItem key={blog.id} blogId={blog.id} image_path={blog.image_path} />;
 	});
 	return <div className="row">{fetchedBumps}</div>;

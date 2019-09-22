@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import '../../assets/styles/blogModal.css';
 import '../../assets/styles/blog.css';
 import MyModal from '../common/modal';
@@ -65,7 +66,6 @@ class CreateBlog extends Component {
 	handleImage = (e) => {
 		if (e.target.files[0]) {
 			const image = e.target.files[0];
-			console.log('chukuwa', e.target.files[0]);
 			this.setState({
 				image
 			});
@@ -86,12 +86,11 @@ class CreateBlog extends Component {
 				});
 			},
 			(error) => {
-				console.log(error);
+				return error;
 			},
-			(complete) => {
+			() => {
 				// returns completion of upload
 				storage.ref('images').child(image.name).getDownloadURL().then((url) => {
-					console.log('imgurl', url);
 					this.setState({
 						image: url
 					});
@@ -113,7 +112,6 @@ class CreateBlog extends Component {
 		mapicha.map((moja) => {
 			if (moja.title === slug) {
 				foundImages.push(moja.image_path);
-				console.log('machi-machi', foundImages);
 				this.setState({
 					blogImages: foundImages
 				});
@@ -128,29 +126,22 @@ class CreateBlog extends Component {
 
 	pickImage = () => {
 		const { bumpArray, childrenArray, engagementArray, familyArray, potraitArray } = this.state;
-		console.log('iko-mimba', bumpArray);
 		let allImages = [];
 		bumpArray.map((moja) => {
-			console.log('kamoja', moja.title);
 			allImages.push(moja);
 		});
 		childrenArray.map((moja) => {
-			console.log('kamoja', moja.title);
 			allImages.push(moja);
 		});
 		engagementArray.map((moja) => {
-			console.log('kamoja', moja.title);
 			allImages.push(moja);
 		});
 		familyArray.map((moja) => {
-			console.log('kamoja', moja.title);
 			allImages.push(moja);
 		});
 		potraitArray.map((moja) => {
-			console.log('kamoja', moja.title);
 			allImages.push(moja);
 		});
-		console.log('imageCollection', allImages);
 		this.setState({
 			mapicha: allImages
 		});
@@ -160,15 +151,16 @@ class CreateBlog extends Component {
 		event.preventDefault();
 		const { title, tag, description, body, image } = this.state;
 		const blogData = { title, tag, description, body, image };
-		console.log('blogData', this.state);
 
+		// eslint-disable-next-line react/prop-types
 		this.props.createBlogAction(blogData);
 		this.setState({
 			creating: false
 		});
 	};
 
-	handleDelete = (slug) => {
+	handleDelete = () => {
+		// iil pass this slug argument when fixing
 		// event.preventDefault();
 		// axios
 		// 	.delete(`https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/blog/${slug}`)
@@ -176,7 +168,7 @@ class CreateBlog extends Component {
 		// 		this.fetchBlogs();
 		// 	})
 		// 	.catch((err) => {
-		// 		console.log('err', err);
+		// 		throw err;
 		// 	});
 	};
 
@@ -187,16 +179,15 @@ class CreateBlog extends Component {
 		axios
 			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/blog/')
 			.then((response) => {
-				console.log('response', response.data.results);
 				const blogs = response.data.results;
 				this.setState({
 					blogArray: blogs,
 					isLoading: false
 				});
-				return response.json();
+				
 			})
 			.catch((err) => {
-				console.log('err', err);
+				throw  err;
 			});
 	};
 	fetchBumps = () => {
@@ -206,16 +197,14 @@ class CreateBlog extends Component {
 		axios
 			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/bump/')
 			.then((response) => {
-				console.log('mimba', response.data.results);
 				const blogs = response.data.results;
 				this.setState({
 					bumpArray: blogs,
 					isLoading: false
 				});
-				return response.json();
 			})
 			.catch((err) => {
-				console.log('err', err);
+				throw err;
 			});
 	};
 	fetchChundren = () => {
@@ -225,16 +214,15 @@ class CreateBlog extends Component {
 		axios
 			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/children')
 			.then((response) => {
-				console.log('chundren', response.data.results);
 				const blogs = response.data.results;
 				this.setState({
 					childrenArray: blogs,
 					isLoading: false
 				});
-				return response.json();
+				
 			})
 			.catch((err) => {
-				console.log('err', err);
+				throw err;
 			});
 	};
 	fetchEngagements = () => {
@@ -244,16 +232,15 @@ class CreateBlog extends Component {
 		axios
 			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/engagements/')
 			.then((response) => {
-				console.log('response', response.data.results);
 				const blogs = response.data.results;
 				this.setState({
 					engagementArray: blogs,
 					isLoading: false
 				});
-				return response.json();
+				
 			})
 			.catch((err) => {
-				console.log('err', err);
+				throw err;
 			});
 	};
 	fetchFamily = () => {
@@ -263,16 +250,15 @@ class CreateBlog extends Component {
 		axios
 			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/family')
 			.then((response) => {
-				console.log('response', response.data.results);
 				const blogs = response.data.results;
 				this.setState({
 					familyArray: blogs,
 					isLoading: false
 				});
-				return response.json();
+				
 			})
 			.catch((err) => {
-				console.log('err', err);
+				throw err;
 			});
 	};
 	fetchPotraits = () => {
@@ -282,27 +268,22 @@ class CreateBlog extends Component {
 		axios
 			.get('https://royalframesmedia-api.herokuapp.com/photography/royalframesmedia/potraits/')
 			.then((response) => {
-				console.log('response', response.data.results);
 				const blogs = response.data.results;
 				this.setState({
 					potraitArray: blogs,
 					isLoading: false
 				});
-				return response.json();
 			})
 			.catch((err) => {
-				console.log('err', err);
+				throw err;
 			});
 	};
 	render() {
 		const { creating, blogArray, progress, blogImages, isLoading, specificBlog } = this.state;
 		const userToken = localStorage.getItem('token');
-		console.log('specificBlog', specificBlog);
 
 		const picha = blogImages.map((moja) => {
-			console.log('kapicha-kamue', moja);
 			return <img key={moja.slug} className="img-fluid my-2" src={moja} />;
-			// allImages.push(moja);
 		});
 		return (
 			<React.Fragment>
@@ -416,9 +397,12 @@ class CreateBlog extends Component {
 		);
 	}
 }
+CreateBlog.defaultProps = {
+	newBlog: PropTypes.object,
+	createBlogAction: PropTypes.func
+};
 
 const mapStateToProps = (state) => ({
-	newBlog: state.blogReducer.newBlog,
-	blogs: state.blogReducer.blogs.data
+	newBlog: state.blogReducer.newBlog
 });
 export default connect(mapStateToProps, { createBlogAction })(CreateBlog);

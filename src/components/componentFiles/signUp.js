@@ -22,13 +22,12 @@ class AuthPage extends Component {
 		event.preventDefault();
 		const { username, email, password } = this.state;
 		const userData = { username, email, password };
-		console.log('stateData', this.state);
 
+		// eslint-disable-next-line react/prop-types
 		this.props.signUpAction(userData);
 	};
 
 	render() {
-		console.log('redux props', this.props);
 		return (
 			<form className="auth-form" onSubmit={this.handleSignUp}>
 				<div className="form-ctrl">
